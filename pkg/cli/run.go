@@ -28,12 +28,12 @@ func NewRunCmd() *cobra.Command {
 	runCmd := &cobra.Command{
 		Use:   "run <test-file-or-directory>",
 		Short: "Run test definition(s)",
-		Long:  `Execute one or more tests and validate their output against expected results.
+		Long: `Execute one or more tests and validate their output against expected results.
 
 You can provide either:
   - A specific test file (test.yaml)
   - A directory containing test files (will search recursively)`,
-		Args:  cobra.ExactArgs(1),
+		Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			path := args[0]
 			log := util.GetLogger()
@@ -200,8 +200,14 @@ func runSingleTest(testFile string, target targets.Target, targetConfig *config.
 		return false, fmt.Errorf("failed to write filtered output: %w", err)
 	}
 
+	// Get target type for validation
+	tgtType := ""
+	if targetConfig != nil {
+		tgtType = targetConfig.Type
+	}
+
 	// Validate against expected output using the filtered file
-	validation, err := validator.ValidateFiles(filteredOutputFile, test.Expect.Output.ResolvedFilePath, test.GetTestDir(), filteredActual, test.Expect.Output.Result)
+	validation, err := validator.ValidateFiles(test.GetTestDir(), tgtType, filteredActual, test.Expect.Output.Result)
 	if err != nil {
 		return false, fmt.Errorf("validation error: %w", err)
 	}
@@ -217,13 +223,39 @@ func runSingleTest(testFile string, target targets.Target, targetConfig *config.
 	// Test failed
 	red := color.New(color.FgRed, color.Bold)
 	red.Println("  ✗ FAILED")
-	fmt.Println("    Differences:")
-	// Indent the diff
-	diffLines := strings.Split(validation.Diff, "\n")
-	for _, line := range diffLines {
-		if line != "" {
-			fmt.Printf("    %s\n", line)
+
+	// Print validation errors in a pretty format
+	if len(validation.Errors) > 0 {
+		fmt.Printf("\n    Found %d validation error(s):\n\n", len(validation.Errors))
+
+		yellow := color.New(color.FgYellow, color.Bold)
+		cyan := color.New(color.FgCyan)
+
+		for i, err := range validation.Errors {
+			// Print error number and path
+			yellow.Printf("    [%d] %s\n", i+1, err.Path)
+
+			// Print message if present
+			if err.Message != "" {
+				fmt.Printf("        %s\n", err.Message)
+			}
+
+			// Print expected vs actual if present
+			if err.Expected != nil {
+				cyan.Print("        Expected: ")
+				fmt.Printf("%v\n", err.Expected)
+			}
+			if err.Actual != nil {
+				cyan.Print("        Actual:   ")
+				fmt.Printf("%v\n", err.Actual)
+			}
+
+			// Add spacing between errors
+			if i < len(validation.Errors)-1 {
+				fmt.Println()
+			}
 		}
+		fmt.Println()
 	}
 
 	return false, nil

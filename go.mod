@@ -7,7 +7,7 @@ require (
 	github.com/go-logr/logr v1.4.3
 	github.com/go-playground/validator/v10 v10.19.0
 	github.com/konveyor/analyzer-lsp v0.9.0-alpha.1.0.20251203204407-6db0ae365a92
-	github.com/konveyor/tackle2-hub v0.9.0-alpha.1.0.20251202133231-c937c30f820f
+	github.com/konveyor/tackle2-hub v0.9.0-alpha.1.0.20251208230742-29b7e93d6986
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
 	github.com/spf13/cobra v1.9.1
 	gopkg.in/yaml.v2 v2.4.0
@@ -62,6 +62,8 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
+	github.com/konveyor/tackle2-addon v0.9.0-alpha.1.0.20251202141412-f6352badfc54 // indirect
+	github.com/konveyor/tackle2-addon-analyzer v0.9.0-alpha.1.0.20251202153859-6017a1551148 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect

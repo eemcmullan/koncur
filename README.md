@@ -122,6 +122,7 @@ tackleHub:
 ```
 
 ### Tackle UI (Browser Automation)
+** Not Implemented **
 
 ```yaml
 type: tackle-ui
@@ -143,6 +144,8 @@ kaiRPC:
 ```
 
 ### VSCode Extension
+
+** Not Implemented **
 
 ```yaml
 type: vscode
@@ -254,6 +257,105 @@ go test ./...
 # Validate a test definition
 ./koncur validate testdata/examples/sample_test.yaml
 ```
+
+## Testing Against Tackle Hub
+
+Koncur includes a Makefile for quickly setting up and testing against a local Tackle Hub instance running in Kind (Kubernetes in Docker).
+
+### Quick Setup
+
+```bash
+# Complete setup: create cluster, install hub, build binary
+make setup
+
+# This runs:
+# 1. make kind-create  - Creates Kind cluster with ingress
+# 2. make hub-install  - Installs Tackle Hub with OLM
+# 3. make build        - Builds the koncur binary
+```
+
+### Accessing Tackle Hub
+
+Once setup is complete, Tackle Hub is accessible via:
+
+**Ingress (recommended):**
+- Hub API: `http://localhost:8080/hub`
+- Hub UI: `http://localhost:8080/hub`
+
+**Port-forward (alternative):**
+```bash
+make hub-forward
+# Hub will be available at http://localhost:8081
+```
+
+### Running Tests
+
+```bash
+# Run a test against Tackle Hub
+make test-hub
+
+# Or run manually with koncur
+./koncur run tests/tackle-testapp-with-deps/test.yaml \
+  --target-config .koncur/config/target-tackle-hub.yaml
+```
+
+### Makefile Targets
+
+**Setup & Teardown:**
+- `make setup` - Complete setup (cluster + hub + build)
+- `make teardown` - Complete teardown (uninstall hub + delete cluster)
+
+**Cluster Management:**
+- `make kind-create` - Create Kind cluster with ingress-nginx
+- `make kind-delete` - Delete the Kind cluster
+
+**Tackle Hub:**
+- `make hub-install` - Install Tackle Hub (OLM + operator + CR)
+- `make hub-uninstall` - Uninstall Tackle Hub
+- `make hub-status` - Check Tackle Hub status
+- `make hub-forward` - Port-forward to access Hub at :8081
+
+**Build & Test:**
+- `make build` - Build koncur binary
+- `make test-hub` - Run tackle-testapp test against Hub
+- `make clean` - Clean build artifacts and test outputs
+
+### Configuration
+
+The Makefile uses these configurable variables:
+
+```bash
+KIND_CLUSTER_NAME ?= koncur-test
+KONVEYOR_NAMESPACE ?= konveyor-tackle
+KUBECTL ?= kubectl
+```
+
+### Target Configuration
+
+The default Tackle Hub target config (`.koncur/config/target-tackle-hub.yaml`):
+
+```yaml
+type: tackle-hub
+tackleHub:
+  url: http://localhost:8080/hub
+  token: ""
+  mavenSettings: settings.xml
+```
+
+### Troubleshooting
+
+**Ingress not working:**
+- Ensure Kind cluster was created with ingress support: `kubectl get pods -n ingress-nginx`
+- Verify ingress controller is running and ready
+- Check ingress resource: `kubectl get ingress -n konveyor-tackle`
+
+**Operator not ready:**
+- Check operator logs: `kubectl logs -n konveyor-tackle -l name=tackle-operator`
+- Verify CRD installed: `kubectl get crd tackles.tackle.konveyor.io`
+
+**Hub pods not starting:**
+- Check pod status: `make hub-status`
+- View pod logs: `kubectl logs -n konveyor-tackle -l app.kubernetes.io/name=tackle-hub`
 
 ## License
 

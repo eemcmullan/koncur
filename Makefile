@@ -2,8 +2,7 @@
 
 # Configuration
 KIND_CLUSTER_NAME ?= koncur-test
-KONVEYOR_NAMESPACE ?= my-konveyor-operator
-OLM_VERSION ?= v0.38.0
+KONVEYOR_NAMESPACE ?= konveyor-tackle
 KUBECTL ?= kubectl
 
 help: ## Show this help message
@@ -14,19 +13,44 @@ help: ## Show this help message
 
 ##@ Cluster Management
 
-kind-create: ## Create a Kind cluster for testing
+kind-create: ## Create a Kind cluster for testing with ingress support
 	@echo "Creating Kind cluster: $(KIND_CLUSTER_NAME)..."
 	@mkdir -p .koncur/config
 	@printf 'kind: Cluster\n' > .koncur/config/kind-config.yaml
 	@printf 'apiVersion: kind.x-k8s.io/v1alpha4\n' >> .koncur/config/kind-config.yaml
 	@printf 'nodes:\n' >> .koncur/config/kind-config.yaml
 	@printf -- '- role: control-plane\n' >> .koncur/config/kind-config.yaml
+	@printf '  kubeadmConfigPatches:\n' >> .koncur/config/kind-config.yaml
+	@printf '  - |\n' >> .koncur/config/kind-config.yaml
+	@printf '    kind: InitConfiguration\n' >> .koncur/config/kind-config.yaml
+	@printf '    nodeRegistration:\n' >> .koncur/config/kind-config.yaml
+	@printf '      kubeletExtraArgs:\n' >> .koncur/config/kind-config.yaml
+	@printf '        node-labels: "ingress-ready=true"\n' >> .koncur/config/kind-config.yaml
 	@printf '  extraPortMappings:\n' >> .koncur/config/kind-config.yaml
-	@printf '  - containerPort: 30080\n' >> .koncur/config/kind-config.yaml
-	@printf '    hostPort: 8081\n' >> .koncur/config/kind-config.yaml
+	@printf '  - containerPort: 80\n' >> .koncur/config/kind-config.yaml
+	@printf '    hostPort: 8080\n' >> .koncur/config/kind-config.yaml
+	@printf '    protocol: TCP\n' >> .koncur/config/kind-config.yaml
+	@printf '  - containerPort: 443\n' >> .koncur/config/kind-config.yaml
+	@printf '    hostPort: 8443\n' >> .koncur/config/kind-config.yaml
 	@printf '    protocol: TCP\n' >> .koncur/config/kind-config.yaml
 	@kind create cluster --name $(KIND_CLUSTER_NAME) --config .koncur/config/kind-config.yaml
-	@echo "Cluster created successfully"
+	@echo "Installing ingress-nginx controller..."
+	@$(KUBECTL) apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+	@echo "Waiting for ingress-nginx namespace to be created..."
+	@for i in $$(seq 1 30); do \
+		$(KUBECTL) get namespace ingress-nginx >/dev/null 2>&1 && break || sleep 2; \
+		if [ $$i -eq 30 ]; then echo "Timeout waiting for ingress-nginx namespace"; exit 1; fi; \
+	done
+	@echo "Waiting for ingress controller pod to be created and ready..."
+	@for i in $$(seq 1 120); do \
+		if $(KUBECTL) wait --namespace ingress-nginx --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=5s >/dev/null 2>&1; then \
+			echo "Ingress controller is ready"; \
+			break; \
+		fi; \
+		if [ $$i -eq 120 ]; then echo "Timeout waiting for ingress controller to be ready"; exit 1; fi; \
+		sleep 3; \
+	done
+	@echo "Cluster created successfully with ingress support"
 
 kind-delete: ## Delete the Kind cluster
 	@echo "Deleting Kind cluster: $(KIND_CLUSTER_NAME)..."
@@ -35,42 +59,57 @@ kind-delete: ## Delete the Kind cluster
 
 ##@ Tackle Hub Installation
 
-hub-install: ## Install Tackle Hub on the Kind cluster
+hub-install: ## Install Tackle Hub on the Kind cluster (from main branch)
 	@echo "Installing OLM..."
-	@curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/$(OLM_VERSION)/install.sh | bash -s $(OLM_VERSION)
+	@curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.38.0/install.sh | bash -s v0.38.0 || true
 	@echo "Waiting for OLM to be ready..."
 	@$(KUBECTL) wait --for=condition=ready pod -l app=olm-operator -n olm --timeout=300s
 	@$(KUBECTL) wait --for=condition=ready pod -l app=catalog-operator -n olm --timeout=300s
-	@echo "Installing Konveyor operator..."
-	@$(KUBECTL) create -f https://operatorhub.io/install/konveyor-operator.yaml
-	@echo "Waiting for operator pod to be created..."
-	@sleep 15
-	@echo "Waiting for operator CRD to be available..."
-	@$(KUBECTL) wait --for condition=established --timeout=300s crd/tackles.tackle.konveyor.io || true
+	@echo "Installing Tackle operator from main branch..."
+	@$(KUBECTL) apply -f https://raw.githubusercontent.com/konveyor/tackle2-operator/main/tackle-k8s.yaml
+	@echo "Waiting for Tackle CRD to be available..."
+	@for i in $$(seq 1 60); do \
+		$(KUBECTL) get crd tackles.tackle.konveyor.io >/dev/null 2>&1 && break || sleep 5; \
+		if [ $$i -eq 60 ]; then echo "Timeout waiting for CRD to be created"; exit 1; fi; \
+	done
+	@$(KUBECTL) wait --for condition=established --timeout=300s crd/tackles.tackle.konveyor.io
 	@echo "Waiting for operator to be ready..."
-	@$(KUBECTL) wait --for=condition=ready pod -l control-plane=operator -n my-konveyor-operator --timeout=300s || true
-	@echo "Creating Tackle instance..."
+	@for i in $$(seq 1 120); do \
+		if $(KUBECTL) wait --namespace konveyor-tackle --for=condition=ready pod --selector=name=tackle-operator --timeout=5s >/dev/null 2>&1; then \
+			echo "Tackle operator is ready"; \
+			break; \
+		fi; \
+		if [ $$i -eq 120 ]; then echo "Timeout waiting for operator to be ready"; exit 1; fi; \
+		sleep 3; \
+	done
+	@echo "Creating Tackle CR with auth disabled..."
 	@mkdir -p .koncur/config
 	@printf 'kind: Tackle\n' > .koncur/config/tackle-cr.yaml
 	@printf 'apiVersion: tackle.konveyor.io/v1alpha1\n' >> .koncur/config/tackle-cr.yaml
 	@printf 'metadata:\n' >> .koncur/config/tackle-cr.yaml
 	@printf '  name: tackle\n' >> .koncur/config/tackle-cr.yaml
-	@printf '  namespace: my-konveyor-operator\n' >> .koncur/config/tackle-cr.yaml
+	@printf '  namespace: konveyor-tackle\n' >> .koncur/config/tackle-cr.yaml
 	@printf 'spec:\n' >> .koncur/config/tackle-cr.yaml
-	@printf '  feature_auth_required: false\n' >> .koncur/config/tackle-cr.yaml
+	@printf '  feature_auth_required: "false"\n' >> .koncur/config/tackle-cr.yaml
 	@$(KUBECTL) apply -f .koncur/config/tackle-cr.yaml
 	@echo "Waiting for Tackle Hub to be ready (this may take a few minutes)..."
-	@echo "Monitoring deployment progress..."
-	@$(KUBECTL) wait --for=condition=ready pod -l app.kubernetes.io/name=tackle-hub -n $(KONVEYOR_NAMESPACE) --timeout=600s || true
+	@sleep 30
+	@$(KUBECTL) wait --for=condition=ready pod -l app.kubernetes.io/name=tackle-hub -n konveyor-tackle --timeout=600s || true
 	@echo ""
 	@echo "Tackle Hub installation complete!"
+	@echo ""
+	@if $(KUBECTL) get pods -n ingress-nginx --no-headers 2>/dev/null | grep -q ingress-nginx-controller; then \
+		echo "Access Tackle Hub via ingress at: http://localhost:8080"; \
+		echo "Hub UI: http://localhost:8080/hub"; \
+		echo ""; \
+	fi
+	@echo "Or run 'make hub-forward' to access via port-forward at :8081"
 	@echo "Run 'make hub-status' to check the status"
-	@echo "Run 'make hub-forward' to access the UI"
 
 hub-uninstall: ## Uninstall Tackle Hub
 	@echo "Uninstalling Tackle Hub..."
-	@$(KUBECTL) delete tackle tackle -n $(KONVEYOR_NAMESPACE) --ignore-not-found=true
-	@$(KUBECTL) delete namespace $(KONVEYOR_NAMESPACE) --ignore-not-found=true
+	@$(KUBECTL) delete tackle tackle -n $(KONVEYOR_NAMESPACE) --ignore-not-found=true || true
+	@$(KUBECTL) delete namespace $(KONVEYOR_NAMESPACE) --ignore-not-found=true || true
 	@echo "Tackle Hub uninstalled"
 
 hub-status: ## Check Tackle Hub status
