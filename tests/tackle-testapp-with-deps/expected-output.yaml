@@ -10,7 +10,7 @@
       - konveyor.io/target=cloud-readiness
       - storage
       incidents:
-      - uri: file:///root/.m2/repository/io/konveyor/demo/configuration-utils/1.0.0/io/konveyor/demo/config/ApplicationConfiguration.java
+      - uri: file:///m2/io/konveyor/demo/configuration-utils/1.0.0/io/konveyor/demo/config/ApplicationConfiguration.java
         message: |-
           An application running inside a container could lose access to a file in local storage.
 
@@ -33,7 +33,7 @@
           {\n22  var6.addSuppressed(var5);\n23  }\n24  "
         lineNumber: 14
         variables:
-          file: file:///root/.m2/repository/io/konveyor/demo/configuration-utils/1.0.0/io/konveyor/demo/config/ApplicationConfiguration.java
+          file: file:///m2/io/konveyor/demo/configuration-utils/1.0.0/io/konveyor/demo/config/ApplicationConfiguration.java
           kind: Constructor
           name: loadProperties
           package: io.konveyor.demo.config

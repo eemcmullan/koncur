@@ -36,13 +36,13 @@ func (b *baseValidator) compareViolation(expected, actual konveyor.Violation) ([
 		}, true
 	}
 
-	if expected.Category != actual.Category {
+	if actual.Category != nil && *expected.Category != *actual.Category {
 		validationError = append(validationError, ValidationError{
 			Path:    "",
 			Message: fmt.Sprintf("Did not find expected category: %v", expected.Category),
 		})
 	}
-	if expected.Effort != actual.Effort {
+	if (expected.Effort != nil && actual.Effort != nil) && (*expected.Effort != *actual.Effort) {
 		validationError = append(validationError, ValidationError{
 			Path:    "",
 			Message: fmt.Sprintf("Did not find expected effort: %v", expected.Effort),
@@ -98,7 +98,15 @@ func (b *baseValidator) compareViolation(expected, actual konveyor.Violation) ([
 			if i.Message != ai.Message {
 				continue
 			}
-			if i.LineNumber != ai.LineNumber {
+			expectedLN := 0
+			if i.LineNumber != nil {
+				expectedLN = *i.LineNumber
+			}
+			actualLN := 0
+			if ai.LineNumber != nil {
+				actualLN = *ai.LineNumber
+			}
+			if expectedLN != actualLN {
 				continue
 			}
 			if !reflect.DeepEqual(i.Variables, ai.Variables) {

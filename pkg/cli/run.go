@@ -88,11 +88,31 @@ You can provide either:
 					return fmt.Errorf("failed to load target config: %w", err)
 				}
 			} else if targetType != "" {
-				// Create default config for specified type
-				targetConfig = &config.TargetConfig{Type: targetType}
+				// Try to auto-discover config file for the specified target type
+				discoveredPath := fmt.Sprintf(".koncur/config/target-%s.yaml", targetType)
+				if _, err := os.Stat(discoveredPath); err == nil {
+					log.Info("Auto-discovered target configuration", "file", discoveredPath)
+					targetConfig, err = config.LoadTargetConfig(discoveredPath)
+					if err != nil {
+						return fmt.Errorf("failed to load auto-discovered target config: %w", err)
+					}
+				} else {
+					// Create default config for specified type
+					targetConfig = &config.TargetConfig{Type: targetType}
+				}
 			} else {
-				// Default to kantra
-				targetConfig = &config.TargetConfig{Type: "kantra"}
+				// Default to kantra, try to auto-discover first
+				discoveredPath := ".koncur/config/target-kantra.yaml"
+				if _, err := os.Stat(discoveredPath); err == nil {
+					log.Info("Auto-discovered target configuration", "file", discoveredPath)
+					targetConfig, err = config.LoadTargetConfig(discoveredPath)
+					if err != nil {
+						return fmt.Errorf("failed to load auto-discovered target config: %w", err)
+					}
+				} else {
+					// Create default kantra config
+					targetConfig = &config.TargetConfig{Type: "kantra"}
+				}
 			}
 
 			log.Info("Using target", "type", targetConfig.Type)
@@ -195,9 +215,6 @@ func runSingleTest(testFile string, target targets.Target, targetConfig *config.
 		tgtType = targetConfig.Type
 	}
 
-	for _, r := range filteredActual {
-		fmt.Printf("HEHRELJ: %s", r.Name)
-	}
 	// Validate against expected output using the filtered file
 	validation, err := validator.ValidateFiles(test.GetTestDir(), tgtType, filteredActual, test.Expect.Output.Result)
 	if err != nil {

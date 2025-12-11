@@ -19,12 +19,12 @@ import (
 )
 
 var (
-	testDir              string
-	outputDir            string
-	generateFilter       string
-	dryRun               bool
-	targetTypeGen        string
-	targetConfigFileGen  string
+	testDir             string
+	outputDir           string
+	generateFilter      string
+	dryRun              bool
+	targetTypeGen       string
+	targetConfigFileGen string
 )
 
 // NewGenerateCmd creates the generate command
@@ -117,11 +117,35 @@ This is useful when:
 						continue
 					}
 				} else if targetTypeGen != "" {
-					// Create default config for specified type
-					targetConfig = &config.TargetConfig{Type: targetTypeGen}
+					// Try to auto-discover config file for the specified target type
+					discoveredPath := fmt.Sprintf(".koncur/config/target-%s.yaml", targetTypeGen)
+					if _, err := os.Stat(discoveredPath); err == nil {
+						log.Info("Auto-discovered target configuration", "file", discoveredPath)
+						targetConfig, err = config.LoadTargetConfig(discoveredPath)
+						if err != nil {
+							color.Red("  ✗ Failed to load auto-discovered target config: %v", err)
+							failCount++
+							continue
+						}
+					} else {
+						// Create default config for specified type
+						targetConfig = &config.TargetConfig{Type: targetTypeGen}
+					}
 				} else {
-					// Default to kantra
-					targetConfig = &config.TargetConfig{Type: "kantra"}
+					// Default to kantra, try to auto-discover first
+					discoveredPath := ".koncur/config/target-kantra.yaml"
+					if _, err := os.Stat(discoveredPath); err == nil {
+						log.Info("Auto-discovered target configuration", "file", discoveredPath)
+						targetConfig, err = config.LoadTargetConfig(discoveredPath)
+						if err != nil {
+							color.Red("  ✗ Failed to load auto-discovered target config: %v", err)
+							failCount++
+							continue
+						}
+					} else {
+						// Create default kantra config
+						targetConfig = &config.TargetConfig{Type: "kantra"}
+					}
 				}
 
 				// Check if test requires maven settings but target doesn't have it
@@ -364,6 +388,14 @@ func saveFilteredOutput(rulesets []konveyor.RuleSet, path string, testDir string
 	yamlStr := string(data)
 	if testDir != "" {
 		yamlStr = strings.ReplaceAll(yamlStr, testDir, "")
+	}
+
+	// TODO: Handle make it so that target exposes the paths to normalize
+	if strings.Contains(yamlStr, "/root/.m2/repository") {
+		yamlStr = strings.ReplaceAll(yamlStr, "/root/.m2/repository/", "/m2/")
+	}
+	if strings.Contains(yamlStr, "/cache/m2/") {
+		yamlStr = strings.ReplaceAll(yamlStr, "/cache/m2/", "/m2/")
 	}
 
 	err = os.WriteFile(path, []byte(yamlStr), 0644)

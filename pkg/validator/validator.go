@@ -7,7 +7,6 @@ import (
 
 	"github.com/fatih/color"
 	konveyor "github.com/konveyor/analyzer-lsp/output/v1/konveyor"
-	"github.com/konveyor/test-harness/pkg/util"
 )
 
 type tagCompare interface {
@@ -110,7 +109,6 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 		Errors: []ValidationError{},
 	}
 
-	log := util.GetLogger()
 	errors := []ValidationError{}
 	comparer := getComparer(targetType, testDir)
 
@@ -118,11 +116,9 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 		found := false
 		for _, rs := range actual {
 			if rs.Name != ers.Name {
-				log.Info("not_found", "rs_name", rs.Name, "ers_name", ers.Name)
 				continue
 			}
 			found = true
-			log.Info("found", "rs_name", rs.Name, "ers_name", ers.Name)
 
 			if !maps.Equal(ers.Errors, rs.Errors) {
 				for k, eerr := range ers.Errors {
@@ -195,7 +191,6 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 			break
 		}
 		if !found {
-			log.Info("not_found_error", "ers_name", ers.Name)
 			errors = append(errors, ValidationError{Path: fmt.Sprintf("ruleset/%s", ers.Name), Message: "Did not find a matching ruleset"})
 		}
 	}

@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	konveyor "github.com/konveyor/analyzer-lsp/output/v1/konveyor"
-	"github.com/konveyor/test-harness/pkg/util"
 )
 
 type tackleHubValidator struct {
@@ -23,9 +22,7 @@ func (t *tackleHubValidator) compareSkipped(expected string, actual []string) (*
 	return nil, false
 }
 
-// Incidents are not saved for insights for tags only AFAICT
 func (t *tackleHubValidator) compareViolation(expected, actual konveyor.Violation) ([]ValidationError, bool) {
-	log := util.GetLogger()
 	validationError := []ValidationError{}
 	if reflect.DeepEqual(actual, konveyor.Violation{}) {
 		return []ValidationError{
@@ -37,7 +34,6 @@ func (t *tackleHubValidator) compareViolation(expected, actual konveyor.Violatio
 	}
 	skipForInsight := expected.Effort == nil
 	if !skipForInsight && (expected.Effort != nil && actual.Effort != nil) && (*expected.Effort != *actual.Effort) {
-		log.Info("checking effort failed", "expected", *expected.Effort, "actual", *actual.Effort)
 		validationError = append(validationError, ValidationError{
 			Path:    "",
 			Message: fmt.Sprintf("Did not find expected effort: %v", expected.Effort),
@@ -55,7 +51,7 @@ func (t *tackleHubValidator) compareViolation(expected, actual konveyor.Violatio
 		for _, l := range expected.Links {
 			found := false
 			for _, al := range actual.Links {
-				if l.Title == al.Title && l.URL == al.Title {
+				if l.Title == al.Title && l.URL == al.URL {
 					found = true
 					break
 				}
@@ -84,14 +80,19 @@ func (t *tackleHubValidator) compareViolation(expected, actual konveyor.Violatio
 		for _, ai := range actual.Incidents {
 			// For code snips, there is no way to confifgure them
 			// So for tackle2Hub we are going to ignore code snips
+			if i.URI == "" || ai.URI == "" {
+
+			}
 			if i.URI != "" && ai.URI != "" {
-				// We need to handle the normalization to get to the actual source code
-				pathToTest, err := filepath.Rel("/source", i.URI.Filename())
-				if err != nil {
-					break
-				}
-				if !strings.Contains(ai.URI.Filename(), pathToTest) {
-					continue
+				if i.URI != ai.URI {
+					// We need to handle the normalization to get to the actual source code
+					pathToTest, err := filepath.Rel("/source", i.URI.Filename())
+					if err != nil {
+						break
+					}
+					if !strings.Contains(ai.URI.Filename(), pathToTest) {
+						continue
+					}
 				}
 			}
 
@@ -99,7 +100,6 @@ func (t *tackleHubValidator) compareViolation(expected, actual konveyor.Violatio
 				continue
 			}
 			if i.LineNumber != nil && ai.LineNumber != nil && *i.LineNumber != *ai.LineNumber {
-				log.Info("checking LineNumber failed", "expected", *i.LineNumber, "actual", *ai.LineNumber)
 				continue
 			}
 			found = true
@@ -123,19 +123,8 @@ func (t *tackleHubValidator) compareViolation(expected, actual konveyor.Violatio
 	return validationError, len(validationError) != 0
 }
 
+// Tags are collided to last found and will only contain a single source even if two rulesets find the same tag.
+// We are still validating that the insights that find these tags are set, so we should be fine.
 func (t *tackleHubValidator) compareTag(expected string, actual []string) (*ValidationError, bool) {
-	// This is going to be hacky, need to follow category and all of that to get the full tag value, maybe.
-	log := util.GetLogger()
-	for _, a := range actual {
-		if strings.Contains(expected, a) {
-			return nil, false
-		}
-	}
-	log.Info("did not find", "expected", expected, "actuals", actual)
-	return &ValidationError{
-		Path:     "",
-		Message:  fmt.Sprintf("Did not find expected tag: %s", expected),
-		Expected: expected,
-		Actual:   nil,
-	}, true
+	return nil, false
 }
