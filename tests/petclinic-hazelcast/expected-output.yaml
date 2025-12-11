@@ -462,7 +462,7 @@
       - tag=Embedded framework - Spring DI
       - tag=Spring DI
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n148  </dependency>\n149  <dependency>\n150  <groupId>com.jayway.jsonpath</groupId>\n151
           \ <artifactId>json-path</artifactId>\n152  <version>${json-path.version}</version>\n153
@@ -484,7 +484,7 @@
       - tag=Embedded framework - Spring Web
       - tag=Spring Web
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n158  <artifactId>spring-data-jpa</artifactId>\n159  </dependency>\n160
           \ \n161  <dependency>\n162  <groupId>org.springframework</groupId>\n163
@@ -520,7 +520,7 @@
       - konveyor.io/include=always
       - tag=Common Annotations
       incidents:
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/InitDataSourceConfig.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/config/InitDataSourceConfig.java
         message: ""
         codeSnip: "\n23  *      http://www.apache.org/licenses/LICENSE-2.0\n24  *\n25
           \ * Unless required by applicable law or agreed to in writing, software\n26
@@ -538,11 +538,11 @@
         lineNumber: 33
         variables:
           annotation: PostConstruct
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/InitDataSourceConfig.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/config/InitDataSourceConfig.java
           kind: Module
           name: javax.annotation.PostConstruct
           package: org.springframework.samples.petclinic.config
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/RootApplicationContextConfig.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/config/RootApplicationContextConfig.java
         message: ""
         codeSnip: "\n23  *      http://www.apache.org/licenses/LICENSE-2.0\n24  *\n25
           \ * Unless required by applicable law or agreed to in writing, software\n26
@@ -559,7 +559,7 @@
         lineNumber: 33
         variables:
           annotation: PostConstruct
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/RootApplicationContextConfig.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/config/RootApplicationContextConfig.java
           kind: Module
           name: javax.annotation.PostConstruct
           package: org.springframework.samples.petclinic.config
@@ -570,7 +570,7 @@
       - konveyor.io/include=always
       - tag=Bean Validation
       incidents:
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
         message: ""
         codeSnip: "\n19  import java.util.Collections;\n20  import java.util.HashSet;\n21
           \ import java.util.List;\n22  import java.util.Set;\n23  \n24  import javax.persistence.CascadeType;\n25
@@ -584,11 +584,11 @@
           Krebs"
         lineNumber: 29
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
           kind: Module
           name: javax.validation.constraints.Digits
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
         message: ""
         codeSnip: "\n20  import java.util.HashSet;\n21  import java.util.List;\n22
           \ import java.util.Set;\n23  \n24  import javax.persistence.CascadeType;\n25
@@ -602,11 +602,11 @@
           Krebs\n40  * @author Juergen Hoeller"
         lineNumber: 30
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
           kind: Module
           name: javax.validation.constraints.NotEmpty
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Person.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Person.java
         message: ""
         codeSnip: "\n10  * Unless required by applicable law or agreed to in writing,
           software\n11  * distributed under the License is distributed on an \"AS
@@ -620,11 +620,11 @@
           class Person extends BaseEntity {\n29  \n30  @Column(name = \"first_name\")"
         lineNumber: 20
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Person.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Person.java
           kind: Module
           name: javax.validation.constraints.NotEmpty
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
         message: ""
         codeSnip: "\n15  */\n16  package org.springframework.samples.petclinic.model;\n17
           \ \n18  import org.springframework.format.annotation.DateTimeFormat;\n19
@@ -637,7 +637,7 @@
           BaseEntity {"
         lineNumber: 25
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
           kind: Module
           name: javax.validation.constraints.NotEmpty
           package: org.springframework.samples.petclinic.model
@@ -649,7 +649,7 @@
       - tag=Java Servlet
       - tag=Servlet
       incidents:
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
         message: ""
         codeSnip: "\n16  package org.springframework.samples.petclinic;\n17  \n18
           \ import org.springframework.samples.petclinic.config.MvcCoreConfig;\n19
@@ -667,11 +667,11 @@
           servlets, register a {@link CharacterEncodingFilter}."
         lineNumber: 26
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
           kind: Module
           name: javax.servlet.Filter
           package: org.springframework.samples.petclinic
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
         message: ""
         codeSnip: "\n17  \n18  import org.springframework.samples.petclinic.config.MvcCoreConfig;\n19
           \ import org.springframework.samples.petclinic.config.RootApplicationContextConfig;\n20
@@ -688,11 +688,11 @@
           servlets, register a {@link CharacterEncodingFilter}.\n37  * <p/>"
         lineNumber: 27
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/PetclinicInitializer.java
           kind: Module
           name: javax.servlet.ServletContext
           package: org.springframework.samples.petclinic
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
         message: ""
         codeSnip: "\n 1  package org.springframework.samples.petclinic.config;\n 2
           \ \n 3  import java.util.List;\n 4  \n 5  import javax.servlet.ServletContext;\n
@@ -703,11 +703,11 @@
           \ import org.springframework.session.SaveMode;\n15  import org.springframework.session.config.SessionRepositoryCustomizer;"
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
           kind: Module
           name: javax.servlet.ServletContext
           package: org.springframework.samples.petclinic.config
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
         message: ""
         codeSnip: "\n 1  package org.springframework.samples.petclinic.config;\n 2
           \ \n 3  import java.util.List;\n 4  \n 5  import javax.servlet.ServletContext;\n
@@ -719,7 +719,7 @@
           \ import org.springframework.session.hazelcast.Hazelcast4IndexedSessionRepository;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/config/SessionConfiguration.java
           kind: Module
           name: javax.servlet.SessionCookieConfig
           package: org.springframework.samples.petclinic.config
@@ -773,7 +773,7 @@
       - tag=Embedded framework - Spring MVC
       - tag=Spring MVC
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n158  <artifactId>spring-data-jpa</artifactId>\n159  </dependency>\n160
           \ \n161  <dependency>\n162  <groupId>org.springframework</groupId>\n163
@@ -825,7 +825,7 @@
       - tag=Persistence=JPA named queries
       - tag=Store=JPA named queries
       incidents:
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
         message: ""
         codeSnip: "\n34  import org.springframework.core.style.ToStringCreator;\n35
           \ \n36  /**\n37  * Simple JavaBean domain object representing an owner.\n38
@@ -836,11 +836,11 @@
           = \"city\")\n52  @NotEmpty\n53  private String city;\n54  "
         lineNumber: 44
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
         message: ""
         codeSnip: "\n35  \n36  /**\n37  * Simple JavaBean domain object representing
           an owner.\n38  *\n39  * @author Ken Krebs\n40  * @author Juergen Hoeller\n41
@@ -851,11 +851,11 @@
           \ \n55  @Column(name = \"telephone\")"
         lineNumber: 45
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Owner.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
         message: ""
         codeSnip: "\n35  import java.util.List;\n36  import java.util.Set;\n37  \n38
           \ /**\n39  * Simple business object representing a pet.\n40  *\n41  * @author
@@ -866,11 +866,11 @@
           \ @JoinColumn(name = \"type_id\")\n55  private PetType type;"
         lineNumber: 45
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
         message: ""
         codeSnip: "\n36  import java.util.Set;\n37  \n38  /**\n39  * Simple business
           object representing a pet.\n40  *\n41  * @author Ken Krebs\n42  * @author
@@ -881,11 +881,11 @@
           \ private PetType type;\n56  "
         lineNumber: 46
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Pet.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
         message: ""
         codeSnip: "\n15  */\n16  package org.springframework.samples.petclinic.model;\n17
           \ \n18  import javax.persistence.Entity;\n19  import javax.persistence.Table;\n20
@@ -894,11 +894,11 @@
           class PetType extends NamedEntity {\n28  \n29  }"
         lineNumber: 25
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
         message: ""
         codeSnip: "\n16  package org.springframework.samples.petclinic.model;\n17
           \ \n18  import javax.persistence.Entity;\n19  import javax.persistence.Table;\n20
@@ -907,11 +907,11 @@
           class PetType extends NamedEntity {\n28  \n29  }"
         lineNumber: 26
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/PetType.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
         message: ""
         codeSnip: "\n16  package org.springframework.samples.petclinic.model;\n17
           \ \n18  import javax.persistence.Entity;\n19  import javax.persistence.Table;\n20
@@ -921,11 +921,11 @@
           \ \n30  }"
         lineNumber: 26
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
         message: ""
         codeSnip: "\n17  \n18  import javax.persistence.Entity;\n19  import javax.persistence.Table;\n20
           \ \n21  /**\n22  * Models a {@link Vet Vet's} specialty (for example, dentistry).\n23
@@ -934,11 +934,11 @@
           \ \n30  }"
         lineNumber: 27
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Specialty.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
         message: ""
         codeSnip: "\n33  import org.springframework.beans.support.PropertyComparator;\n34
           \ \n35  /**\n36  * Simple JavaBean domain object representing a veterinarian.\n37
@@ -952,11 +952,11 @@
           == null) {"
         lineNumber: 43
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
         message: ""
         codeSnip: "\n34  \n35  /**\n36  * Simple JavaBean domain object representing
           a veterinarian.\n37  *\n38  * @author Ken Krebs\n39  * @author Juergen Hoeller\n40
@@ -969,11 +969,11 @@
           == null) {\n54  this.specialties = new HashSet<>();"
         lineNumber: 44
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Vet.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
         message: ""
         codeSnip: "\n23  import javax.persistence.ManyToOne;\n24  import javax.persistence.Table;\n25
           \ import javax.validation.constraints.NotEmpty;\n26  import java.time.LocalDate;\n27
@@ -984,11 +984,11 @@
           = \"yyyy/MM/dd\")\n42  private LocalDate date;\n43  "
         lineNumber: 33
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model
-      - uri: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
+      - uri: file:///source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
         message: ""
         codeSnip: "\n24  import javax.persistence.Table;\n25  import javax.validation.constraints.NotEmpty;\n26
           \ import java.time.LocalDate;\n27  \n28  /**\n29  * Simple JavaBean domain
@@ -999,7 +999,7 @@
           \ private LocalDate date;\n43  \n44  /**"
         lineNumber: 34
         variables:
-          file: file:///opt/input/source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
+          file: file:///source/src/main/java/org/springframework/samples/petclinic/model/Visit.java
           kind: Property
           name: Entity
           package: org.springframework.samples.petclinic.model

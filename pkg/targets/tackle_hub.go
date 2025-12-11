@@ -193,9 +193,13 @@ func (t *TackleHubTarget) Execute(ctx context.Context, test *config.TestDefiniti
 		}
 		incidents := []konveyor.Incident{}
 		for _, i := range insight.Incidents {
+			// Normalize paths to match expected output format
 			if strings.Contains(i.File, "/cache/m2") {
-				// Convert this to m2/
 				i.File = strings.ReplaceAll(i.File, "/cache/m2/", "/m2/")
+			}
+			// Remove container-specific path prefix
+			if strings.Contains(i.File, "/opt/input/source/") {
+				i.File = strings.ReplaceAll(i.File, "/opt/input/source", "/source")
 			}
 			incidents = append(incidents, konveyor.Incident{
 				URI:        uri.File(i.File),

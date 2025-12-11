@@ -397,6 +397,10 @@ func saveFilteredOutput(rulesets []konveyor.RuleSet, path string, testDir string
 	if strings.Contains(yamlStr, "/cache/m2/") {
 		yamlStr = strings.ReplaceAll(yamlStr, "/cache/m2/", "/m2/")
 	}
+	// Normalize Tackle Hub container paths
+	if strings.Contains(yamlStr, "/opt/input/source/") {
+		yamlStr = strings.ReplaceAll(yamlStr, "/opt/input/source", "/source")
+	}
 
 	err = os.WriteFile(path, []byte(yamlStr), 0644)
 	if err != nil {

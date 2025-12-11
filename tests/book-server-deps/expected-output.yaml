@@ -12,7 +12,7 @@
       - konveyor.io/target=azure-spring-apps
       - version
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: |-
           Spring boot version is out of any spring boot support scope.
            Update to open source support version of Spring Boot.
@@ -512,7 +512,7 @@
       - konveyor.io/target=cloud-readiness
       - storage
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+      - uri: file:///source/src/main/java/com/telran/application/model/BookModel.java
         message: |-
           An application running inside a container could lose access to a file in local storage.
 
@@ -537,11 +537,11 @@
           \ pw.close();"
         lineNumber: 14
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+          file: file:///source/src/main/java/com/telran/application/model/BookModel.java
           kind: Constructor
           name: writeBooksToFile
           package: com.telran.application.model
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+      - uri: file:///source/src/main/java/com/telran/application/model/BookModel.java
         message: |-
           An application running inside a container could lose access to a file in local storage.
 
@@ -566,11 +566,11 @@
           throws IOException {"
         lineNumber: 17
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+          file: file:///source/src/main/java/com/telran/application/model/BookModel.java
           kind: Constructor
           name: writeBooksToFile
           package: com.telran.application.model
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+      - uri: file:///source/src/main/java/com/telran/application/model/BookModel.java
         message: |-
           An application running inside a container could lose access to a file in local storage.
 
@@ -593,11 +593,11 @@
           \ if (line == null) break;\n39  Book book = mapper.readValue(line, Book.class);"
         lineNumber: 29
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+          file: file:///source/src/main/java/com/telran/application/model/BookModel.java
           kind: Constructor
           name: readDB
           package: com.telran.application.model
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+      - uri: file:///source/src/main/java/com/telran/application/model/BookModel.java
         message: |-
           An application running inside a container could lose access to a file in local storage.
 
@@ -621,7 +621,7 @@
           \ }"
         lineNumber: 32
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+          file: file:///source/src/main/java/com/telran/application/model/BookModel.java
           kind: Constructor
           name: readDB
           package: com.telran.application.model
@@ -1022,7 +1022,7 @@
       - konveyor.io/target=jws
       - konveyor.io/target=jws6+
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: Version 3.0.0 is the minimum version of Spring Boot that is Jakarta
           EE 9+ compatible
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
@@ -1051,7 +1051,7 @@
       - konveyor.io/target=jws
       - konveyor.io/target=jws6+
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: Version 6.0.0 is the minimum version of Spring that is Jakarta EE
           9+ compatible
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
@@ -1082,7 +1082,7 @@
       - konveyor.io/target=jws
       - konveyor.io/target=jws6+
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: Version 10.1.0 is the minimum version recommended
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
           \ \t\t\t<!--  09.11.2018 -->\n17  </plugin>\n18  </plugins>\n19  </build>\n20
@@ -1112,7 +1112,7 @@
       - konveyor.io/target=openjdk17+
       - konveyor.io/target=spring6+
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: Lombok supports Java 17 since version 1.18.22. The version of Lombok
           used in this project is too old and not compatible with Java 17. You should
           consider upgrading it.
@@ -1157,7 +1157,7 @@
       - konveyor.io/target=openjdk
       - konveyor.io/target=openjdk18+
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+      - uri: file:///source/src/main/java/com/telran/application/model/BookModel.java
         message: "If not supplied, the `java.io.` constructor uses UTF-8 by default.
           \n If you haven't provided the character set, and UTF-8 is not appropriate
           for your class, then supply the appropriate character set to the constructor
@@ -1175,11 +1175,11 @@
         lineNumber: 17
         variables:
           className: ""
-          file: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+          file: file:///source/src/main/java/com/telran/application/model/BookModel.java
           kind: Constructor
           name: writeBooksToFile
           package: com.telran.application.model
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+      - uri: file:///source/src/main/java/com/telran/application/model/BookModel.java
         message: "If not supplied, the `java.io.` constructor uses UTF-8 by default.
           \n If you haven't provided the character set, and UTF-8 is not appropriate
           for your class, then supply the appropriate character set to the constructor
@@ -1196,7 +1196,7 @@
         lineNumber: 32
         variables:
           className: ""
-          file: file:///opt/input/source/src/main/java/com/telran/application/model/BookModel.java
+          file: file:///source/src/main/java/com/telran/application/model/BookModel.java
           kind: Constructor
           name: readDB
           package: com.telran.application.model
@@ -1493,7 +1493,7 @@
       - konveyor.io/source=springboot
       - konveyor.io/target=quarkus
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/BookServerApp.java
+      - uri: file:///source/src/main/java/com/telran/application/BookServerApp.java
         message: "Remove the SpringBoot @SpringBootApplication annotation.\n\n A Spring
           Boot application contains a \"main\" class with the @SpringBootApplication
           annotation. A Quarkus application does not have such a class. Two different
@@ -1511,7 +1511,7 @@
           args);\n10  \n11  }\n12  }"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/BookServerApp.java
+          file: file:///source/src/main/java/com/telran/application/BookServerApp.java
           kind: Property
           name: SpringBootApplication
           package: com.telran.application
@@ -1524,7 +1524,7 @@
       - konveyor.io/source=springboot
       - konveyor.io/target=quarkus
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: |-
           Replace the SpringBoot Dependency Injection artifact with Quarkus `spring-di` extension
 
@@ -1577,7 +1577,7 @@
       - konveyor.io/source=springboot
       - konveyor.io/target=quarkus
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: |-
           Replace the SpringBoot artifact with Quarkus `spring-boot-properties` extension
 
@@ -1606,7 +1606,7 @@
       - konveyor.io/source=springboot
       - konveyor.io/target=quarkus
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: "Replace the Spring Web artifact with Quarkus `spring-web` extension\n\n
           Spring Web is a spring-web artifact brought transitively by any `org.springframework:spring-web*`
           dependency \n Add Quarkus dependency `io.quarkus:quarkus-spring-web` \n
@@ -1714,7 +1714,7 @@
       - konveyor.io/source=springboot
       - konveyor.io/target=rhr
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: Spring Boot has to be updated to Spring Boot 2.2.6 before being able
           to be migrated to a version supported by Red Hat Runtimes
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
@@ -1761,7 +1761,7 @@
       - konveyor.io/source=spring5
       - konveyor.io/target=spring6+
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: |
           Spring Framework 6.0 and above must use at least JakartaEE 9. Check the migration guide in the link for more information.
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
@@ -1787,7 +1787,7 @@
       - konveyor.io/source=spring5
       - konveyor.io/target=spring6+
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: |
           Spring 6 must use at least Hibernate Validator 8.0.
 
@@ -1830,7 +1830,7 @@
       - konveyor.io/target=spring-boot3+
       - konveyor.io/target=spring6+
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/controller/BookQuerriesController.java
+      - uri: file:///source/src/main/java/com/telran/application/controller/BookQuerriesController.java
         message: |
           As of Spring Framework 6.0, the trailing slash matching configuration option has been deprecated and its default
           value set to false. This means that previously, the following controller would match both
@@ -1871,11 +1871,11 @@
           BookModel.getAllBooks();\n19  }\n20  }"
         lineNumber: 16
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/controller/BookQuerriesController.java
+          file: file:///source/src/main/java/com/telran/application/controller/BookQuerriesController.java
           kind: Property
           name: GetMapping
           package: com.telran.application.controller
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/controller/BookStartEndController.java
+      - uri: file:///source/src/main/java/com/telran/application/controller/BookStartEndController.java
         message: |
           As of Spring Framework 6.0, the trailing slash matching configuration option has been deprecated and its default
           value set to false. This means that previously, the following controller would match both
@@ -1920,11 +1920,11 @@
           \ }"
         lineNumber: 15
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/controller/BookStartEndController.java
+          file: file:///source/src/main/java/com/telran/application/controller/BookStartEndController.java
           kind: Property
           name: GetMapping
           package: com.telran.application.controller
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/controller/BookStartEndController.java
+      - uri: file:///source/src/main/java/com/telran/application/controller/BookStartEndController.java
         message: |
           As of Spring Framework 6.0, the trailing slash matching configuration option has been deprecated and its default
           value set to false. This means that previously, the following controller would match both
@@ -1965,7 +1965,7 @@
           {\n24  BookModel.readDB(filename);\n25  }\n26  }"
         lineNumber: 22
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/controller/BookStartEndController.java
+          file: file:///source/src/main/java/com/telran/application/controller/BookStartEndController.java
           kind: Property
           name: GetMapping
           package: com.telran.application.controller
@@ -1982,7 +1982,7 @@
       - konveyor.io/source=spring5
       - konveyor.io/target=spring6+
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/controller/BookQuerriesController.java
+      - uri: file:///source/src/main/java/com/telran/application/controller/BookQuerriesController.java
         message: |
           Spring MVC and Spring WebFlux no longer detect controllers based solely on a type-level @RequestMapping
           annotation. That means interface-based AOP proxying for web controllers may no longer work. Please, enable
@@ -1997,11 +1997,11 @@
           BookModel.getAllBooks();\n19  }\n20  }"
         lineNumber: 14
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/controller/BookQuerriesController.java
+          file: file:///source/src/main/java/com/telran/application/controller/BookQuerriesController.java
           kind: Property
           name: RestController
           package: com.telran.application.controller
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/controller/BookStartEndController.java
+      - uri: file:///source/src/main/java/com/telran/application/controller/BookStartEndController.java
         message: |
           Spring MVC and Spring WebFlux no longer detect controllers based solely on a type-level @RequestMapping
           annotation. That means interface-based AOP proxying for web controllers may no longer work. Please, enable
@@ -2018,7 +2018,7 @@
           \ }\n21  \n22  @GetMapping(value = \"/readDB\")"
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/controller/BookStartEndController.java
+          file: file:///source/src/main/java/com/telran/application/controller/BookStartEndController.java
           kind: Property
           name: RestController
           package: com.telran.application.controller
@@ -2120,7 +2120,7 @@
       - tag=Spring Boot Component Scan
       - tag=Spring Boot Configuration
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/telran/application/BookServerApp.java
+      - uri: file:///source/src/main/java/com/telran/application/BookServerApp.java
         message: ""
         codeSnip: "\n 1  package com.telran.application;\n 2  \n 3  import org.springframework.boot.SpringApplication;\n
           4  import org.springframework.boot.autoconfigure.SpringBootApplication;\n
@@ -2129,7 +2129,7 @@
           args);\n10  \n11  }\n12  }"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/telran/application/BookServerApp.java
+          file: file:///source/src/main/java/com/telran/application/BookServerApp.java
           kind: Property
           name: SpringBootApplication
           package: com.telran.application
@@ -2141,7 +2141,7 @@
       - tag=Embedded framework - Spring DI
       - tag=Spring DI
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
           \ \t\t\t<!--  09.11.2018 -->\n17  </plugin>\n18  </plugins>\n19  </build>\n20
@@ -2163,7 +2163,7 @@
       - tag=Embedded framework - Spring Web
       - tag=Spring Web
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
           \ \t\t\t<!--  09.11.2018 -->\n17  </plugin>\n18  </plugins>\n19  </build>\n20
@@ -2185,7 +2185,7 @@
       - tag=Embedded framework - Spring MVC
       - tag=Spring MVC
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n15  <artifactId>spring-boot-maven-plugin</artifactId>\n16  <version>2.1.0.RELEASE</version>
           \ \t\t\t<!--  09.11.2018 -->\n17  </plugin>\n18  </plugins>\n19  </build>\n20

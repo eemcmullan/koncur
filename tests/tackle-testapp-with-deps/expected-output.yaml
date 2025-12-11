@@ -273,7 +273,7 @@
       - tag=Embedded Spring Data JPA
       - tag=Spring Data JPA
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n59  <dependency>\n60  <groupId>com.fasterxml.jackson.core</groupId>\n61
           \ <artifactId>jackson-core</artifactId>\n62  </dependency>\n63  <dependency>\n64
@@ -295,7 +295,7 @@
       - tag=Embedded framework - Spring DI
       - tag=Spring DI
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n59  <dependency>\n60  <groupId>com.fasterxml.jackson.core</groupId>\n61
           \ <artifactId>jackson-core</artifactId>\n62  </dependency>\n63  <dependency>\n64
@@ -317,7 +317,7 @@
       - tag=Embedded framework - Micrometer
       - tag=Micrometer
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: |2-
 
@@ -354,7 +354,7 @@
       - tag=Embedded framework - Spring Web
       - tag=Spring Web
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: |2-
 
@@ -391,7 +391,7 @@
       - tag=Java Servlet
       - tag=Servlet
       incidents:
-      - uri: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
+      - uri: file:///source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
         message: ""
         codeSnip: "\n 1  package io.konveyor.demo.ordermanagement;\n 2  \n 3  import
           javax.servlet.ServletContext;\n 4  import javax.servlet.ServletException;\n
@@ -403,11 +403,11 @@
           \ {\n13  "
         lineNumber: 3
         variables:
-          file: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
+          file: file:///source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
           kind: Module
           name: javax.servlet.ServletContext
           package: io.konveyor.demo.ordermanagement
-      - uri: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
+      - uri: file:///source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
         message: ""
         codeSnip: "\n 1  package io.konveyor.demo.ordermanagement;\n 2  \n 3  import
           javax.servlet.ServletContext;\n 4  import javax.servlet.ServletException;\n
@@ -419,11 +419,11 @@
           \ {\n13  \n14  @Override"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
+          file: file:///source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
           kind: Module
           name: javax.servlet.ServletException
           package: io.konveyor.demo.ordermanagement
-      - uri: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
+      - uri: file:///source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
         message: ""
         codeSnip: "\n 1  package io.konveyor.demo.ordermanagement;\n 2  \n 3  import
           javax.servlet.ServletContext;\n 4  import javax.servlet.ServletException;\n
@@ -436,7 +436,7 @@
           throws ServletException {"
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
+          file: file:///source/src/main/java/io/konveyor/demo/ordermanagement/OrderManagementAppInitializer.java
           kind: Module
           name: javax.servlet.ServletRegistration
           package: io.konveyor.demo.ordermanagement
@@ -462,7 +462,7 @@
       - tag=Embedded framework - Spring MVC
       - tag=Spring MVC
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: "\n69  <artifactId>spring-data-jpa</artifactId>\n70  </dependency>\n71
           \ \n72  <dependency>\n73  <groupId>org.springframework</groupId>\n74  <artifactId>spring-jdbc</artifactId>\n75
@@ -512,7 +512,7 @@
       - tag=Embedded library - Spring Boot Actuator
       - tag=Spring Boot Actuator
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: ""
         codeSnip: |2-
 
@@ -564,7 +564,7 @@
       - tag=Persistence=JPA named queries
       - tag=Store=JPA named queries
       incidents:
-      - uri: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
+      - uri: file:///source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
         message: ""
         codeSnip: "\n 1  package io.konveyor.demo.ordermanagement.model;\n 2  \n 3
           \ import javax.persistence.Column;\n 4  import javax.persistence.Entity;\n
@@ -578,11 +578,11 @@
           Long id;"
         lineNumber: 11
         variables:
-          file: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
+          file: file:///source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
           kind: Property
           name: Entity
           package: io.konveyor.demo.ordermanagement.model
-      - uri: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
+      - uri: file:///source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
         message: ""
         codeSnip: "\n 2  \n 3  import javax.persistence.Column;\n 4  import javax.persistence.Entity;\n
           5  import javax.persistence.GeneratedValue;\n 6  import javax.persistence.GenerationType;\n
@@ -595,7 +595,7 @@
           Long id;\n22  "
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
+          file: file:///source/src/main/java/io/konveyor/demo/ordermanagement/model/Customer.java
           kind: Property
           name: Entity
           package: io.konveyor.demo.ordermanagement.model

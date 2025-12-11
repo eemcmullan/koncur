@@ -1717,7 +1717,7 @@
       - konveyor.io/target=jakarta-ee
       - konveyor.io/target=jakarta-ee8
       incidents:
-      - uri: file:///opt/input/source/pom.xml
+      - uri: file:///source/pom.xml
         message: If you migrate your application to JBoss EAP 7.3, or later, and want
           to ensure its Maven building, running or testing works as expected, use
           instead the Jakarta EE dependency with groupId `com.sun.activation`
@@ -2382,7 +2382,7 @@
       - konveyor.io/target=jws6+
       - konveyor.io/target=spring6+
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import javax.persistence.*;\n
           4  import java.io.Serializable;\n 5  \n 6  @Entity\n 7  @Table(name = \"PRODUCT_CATALOG\",
@@ -2392,12 +2392,12 @@
           \ private String itemId;"
         lineNumber: 3
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
           kind: Module
           name: javax.persistence
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2408,12 +2408,12 @@
           implements Serializable {"
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Module
           name: javax.persistence.Column
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2424,12 +2424,12 @@
           implements Serializable {\n16  "
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Module
           name: javax.persistence.Entity
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2441,12 +2441,12 @@
           = 7526472295622776147L;"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Module
           name: javax.persistence.Id
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2458,12 +2458,12 @@
           = 7526472295622776147L;\n18  "
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Module
           name: javax.persistence.Table
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2475,12 +2475,12 @@
           = 7526472295622776147L;\n18  \n19  @Id"
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Module
           name: javax.persistence.UniqueConstraint
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: Replace the `javax.xml` import statement with `jakarta.xml`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2492,12 +2492,12 @@
           = 7526472295622776147L;\n18  \n19  @Id\n20  private String itemId;"
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Module
           name: javax.xml.bind.annotation.XmlRootElement
           package: com.redhat.coolstore.model
           renamed: xml
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.List;\n 6  \n 7  import
@@ -2508,12 +2508,12 @@
           \ import javax.persistence.Table;\n16  \n17  @Entity"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.CascadeType
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.List;\n 6  \n 7  import
@@ -2525,12 +2525,12 @@
           \"ORDERS\")"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.Column
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.List;\n 6  \n 7  import
@@ -2542,12 +2542,12 @@
           \"ORDERS\")\n19  public class Order implements Serializable {"
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.Entity
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.List;\n 6  \n 7  import
@@ -2559,12 +2559,12 @@
           \"ORDERS\")\n19  public class Order implements Serializable {\n20  "
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.FetchType
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.List;\n 6  \n 7  import
@@ -2577,12 +2577,12 @@
           \ private static final long serialVersionUID = -1L;"
         lineNumber: 11
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.GeneratedValue
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 2  \n 3  import java.io.Serializable;\n 4  import java.util.ArrayList;\n
           5  import java.util.List;\n 6  \n 7  import javax.persistence.CascadeType;\n
@@ -2595,12 +2595,12 @@
           \ "
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.Id
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 3  import java.io.Serializable;\n 4  import java.util.ArrayList;\n
           5  import java.util.List;\n 6  \n 7  import javax.persistence.CascadeType;\n
@@ -2613,12 +2613,12 @@
           \ \n23  @Id"
         lineNumber: 13
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.JoinColumn
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 4  import java.util.ArrayList;\n 5  import java.util.List;\n
           6  \n 7  import javax.persistence.CascadeType;\n 8  import javax.persistence.Column;\n
@@ -2630,12 +2630,12 @@
           \ private static final long serialVersionUID = -1L;\n22  \n23  @Id\n24  @GeneratedValue"
         lineNumber: 14
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.OneToMany
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 5  import java.util.List;\n 6  \n 7  import javax.persistence.CascadeType;\n
           8  import javax.persistence.Column;\n 9  import javax.persistence.Entity;\n10
@@ -2647,12 +2647,12 @@
           \ \n23  @Id\n24  @GeneratedValue\n25  private long orderId;"
         lineNumber: 15
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Module
           name: javax.persistence.Table
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2662,12 +2662,12 @@
           \ private static final long serialVersionUID = 64565445665456666L;\n15  "
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
           kind: Module
           name: javax.persistence.Column
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2678,12 +2678,12 @@
           \ @Id"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
           kind: Module
           name: javax.persistence.Entity
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2694,12 +2694,12 @@
           \ @Id\n17  @Column(name=\"ID\")"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
           kind: Module
           name: javax.persistence.GeneratedValue
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2710,12 +2710,12 @@
           \ @Id\n17  @Column(name=\"ID\")\n18  @GeneratedValue"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
           kind: Module
           name: javax.persistence.Id
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -2726,12 +2726,12 @@
           \ @Id\n17  @Column(name=\"ID\")\n18  @GeneratedValue\n19  private long id;"
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
           kind: Module
           name: javax.persistence.Table
           package: com.redhat.coolstore.model
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/ShoppingCart.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/ShoppingCart.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.List;\n 6  \n 7  import
@@ -2741,12 +2741,12 @@
           \ \n16  private double cartItemPromoSavings;\n17  "
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/ShoppingCart.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/ShoppingCart.java
           kind: Module
           name: javax.enterprise.context.Dependent
           package: com.redhat.coolstore.model
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.persistence;\n 2  \n 3  import
           javax.enterprise.context.Dependent;\n 4  import javax.enterprise.inject.Produces;\n
@@ -2755,12 +2755,12 @@
           \ private EntityManager em;\n13  "
         lineNumber: 3
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+          file: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
           kind: Module
           name: javax.enterprise.context.Dependent
           package: com.redhat.coolstore.persistence
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.persistence;\n 2  \n 3  import
           javax.enterprise.context.Dependent;\n 4  import javax.enterprise.inject.Produces;\n
@@ -2769,12 +2769,12 @@
           \ private EntityManager em;\n13  \n14  @Produces"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+          file: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
           kind: Module
           name: javax.enterprise.inject.Produces
           package: com.redhat.coolstore.persistence
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.persistence;\n 2  \n 3  import
           javax.enterprise.context.Dependent;\n 4  import javax.enterprise.inject.Produces;\n
@@ -2784,12 +2784,12 @@
           getEntityManager() {"
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+          file: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
           kind: Module
           name: javax.persistence.EntityManager
           package: com.redhat.coolstore.persistence
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.persistence;\n 2  \n 3  import
           javax.enterprise.context.Dependent;\n 4  import javax.enterprise.inject.Produces;\n
@@ -2799,12 +2799,12 @@
           getEntityManager() {\n16  return em;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+          file: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
           kind: Module
           name: javax.persistence.PersistenceContext
           package: com.redhat.coolstore.persistence
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.HashMap;\n 6  import
@@ -2815,12 +2815,12 @@
           javax.ws.rs.core.MediaType;\n18  \n19  import com.redhat.coolstore.model.Product;"
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.enterprise.context.SessionScoped
           package: com.redhat.coolstore.rest
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.HashMap;\n 6  import
@@ -2832,12 +2832,12 @@
           \ import com.redhat.coolstore.model.ShoppingCart;"
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.rest
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.HashMap;\n 6  import
@@ -2849,12 +2849,12 @@
           \ import com.redhat.coolstore.model.ShoppingCart;\n21  import com.redhat.coolstore.model.ShoppingCartItem;"
         lineNumber: 11
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.ws.rs.DELETE
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 2  \n 3  import java.io.Serializable;\n 4  import java.util.ArrayList;\n
           5  import java.util.HashMap;\n 6  import java.util.List;\n 7  import java.util.Map;\n
@@ -2866,12 +2866,12 @@
           \ import com.redhat.coolstore.model.ShoppingCartItem;\n22  import com.redhat.coolstore.service.ShoppingCartService;"
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.ws.rs.GET
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 3  import java.io.Serializable;\n 4  import java.util.ArrayList;\n
           5  import java.util.HashMap;\n 6  import java.util.List;\n 7  import java.util.Map;\n
@@ -2884,12 +2884,12 @@
           \ "
         lineNumber: 13
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.ws.rs.POST
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 4  import java.util.ArrayList;\n 5  import java.util.HashMap;\n
           6  import java.util.List;\n 7  import java.util.Map;\n 8  \n 9  import javax.enterprise.context.SessionScoped;\n10
@@ -2901,12 +2901,12 @@
           \ import com.redhat.coolstore.service.ShoppingCartService;\n23  \n24  @SessionScoped"
         lineNumber: 14
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.ws.rs.Path
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 5  import java.util.HashMap;\n 6  import java.util.List;\n 7
           \ import java.util.Map;\n 8  \n 9  import javax.enterprise.context.SessionScoped;\n10
@@ -2919,12 +2919,12 @@
           \ @Path(\"/cart\")"
         lineNumber: 15
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.ws.rs.PathParam
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 6  import java.util.List;\n 7  import java.util.Map;\n 8  \n
           9  import javax.enterprise.context.SessionScoped;\n10  import javax.inject.Inject;\n11
@@ -2937,12 +2937,12 @@
           implements Serializable {"
         lineNumber: 16
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.ws.rs.Produces
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 7  import java.util.Map;\n 8  \n 9  import javax.enterprise.context.SessionScoped;\n10
           \ import javax.inject.Inject;\n11  import javax.ws.rs.DELETE;\n12  import
@@ -2955,12 +2955,12 @@
           {\n27  "
         lineNumber: 17
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.ws.rs.core.MediaType
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -2970,12 +2970,12 @@
           \ \n15  import com.redhat.coolstore.model.Order;\n16  import com.redhat.coolstore.service.OrderService;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.enterprise.context.RequestScoped
           package: com.redhat.coolstore.rest
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -2986,12 +2986,12 @@
           \ "
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.rest
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3002,12 +3002,12 @@
           \ \n18  @RequestScoped"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.ws.rs.Consumes
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3018,12 +3018,12 @@
           \ \n18  @RequestScoped\n19  @Path(\"/orders\")"
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.ws.rs.GET
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3034,12 +3034,12 @@
           \ \n18  @RequestScoped\n19  @Path(\"/orders\")\n20  @Consumes(MediaType.APPLICATION_JSON)"
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.ws.rs.Path
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3051,12 +3051,12 @@
           \ @Produces(MediaType.APPLICATION_JSON)"
         lineNumber: 11
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.ws.rs.PathParam
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 2  \n 3  import java.io.Serializable;\n 4  import java.util.List;\n
           5  \n 6  import javax.enterprise.context.RequestScoped;\n 7  import javax.inject.Inject;\n
@@ -3068,12 +3068,12 @@
           \ public class OrderEndpoint implements Serializable {"
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.ws.rs.Produces
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 3  import java.io.Serializable;\n 4  import java.util.List;\n
           5  \n 6  import javax.enterprise.context.RequestScoped;\n 7  import javax.inject.Inject;\n
@@ -3085,12 +3085,12 @@
           \ public class OrderEndpoint implements Serializable {\n23  "
         lineNumber: 13
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.ws.rs.core.MediaType
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3099,12 +3099,12 @@
           \ \n14  @RequestScoped\n15  @Path(\"/products\")\n16  @Consumes(MediaType.APPLICATION_JSON)"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Module
           name: javax.enterprise.context.RequestScoped
           package: com.redhat.coolstore.rest
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3114,12 +3114,12 @@
           \ @Produces(MediaType.APPLICATION_JSON)"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.rest
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3130,12 +3130,12 @@
           implements Serializable {"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Module
           name: javax.ws.rs
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -3146,36 +3146,36 @@
           implements Serializable {\n19  "
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Module
           name: javax.ws.rs.core.MediaType
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import javax.ws.rs.ApplicationPath;\n
           4  import javax.ws.rs.core.Application;\n 5  \n 6  \n 7  @ApplicationPath(\"/services\")\n
           8  public class RestApplication extends Application {\n 9  \n10  }"
         lineNumber: 3
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
           kind: Module
           name: javax.ws.rs.ApplicationPath
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
         message: Replace the `javax.ws` import statement with `jakarta.ws`
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import javax.ws.rs.ApplicationPath;\n
           4  import javax.ws.rs.core.Application;\n 5  \n 6  \n 7  @ApplicationPath(\"/services\")\n
           8  public class RestApplication extends Application {\n 9  \n10  }"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/RestApplication.java
           kind: Module
           name: javax.ws.rs.core.Application
           package: com.redhat.coolstore.rest
           renamed: ws
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.List;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.inject.Inject;\n
@@ -3185,12 +3185,12 @@
           \ \n15  import com.redhat.coolstore.model.*;\n16  "
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.service
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.List;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.inject.Inject;\n
@@ -3201,12 +3201,12 @@
           class CatalogService {"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
           kind: Module
           name: javax.persistence.criteria.CriteriaBuilder
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.List;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.inject.Inject;\n
@@ -3217,12 +3217,12 @@
           class CatalogService {\n19  "
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
           kind: Module
           name: javax.persistence.criteria.CriteriaQuery
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.List;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.inject.Inject;\n
@@ -3233,12 +3233,12 @@
           class CatalogService {\n19  \n20  @Inject"
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
           kind: Module
           name: javax.persistence.criteria.Root
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 2  \n 3  import java.util.List;\n 4  import java.util.logging.Logger;\n
           5  \n 6  import javax.inject.Inject;\n 7  \n 8  import javax.persistence.criteria.CriteriaBuilder;\n
@@ -3248,12 +3248,12 @@
           class CatalogService {\n19  \n20  @Inject\n21  Logger log;\n22  "
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
           kind: Module
           name: javax.ejb.Stateless
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 3  import java.util.List;\n 4  import java.util.logging.Logger;\n
           5  \n 6  import javax.inject.Inject;\n 7  \n 8  import javax.persistence.criteria.CriteriaBuilder;\n
@@ -3263,12 +3263,12 @@
           class CatalogService {\n19  \n20  @Inject\n21  Logger log;\n22  \n23  @Inject"
         lineNumber: 13
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
           kind: Module
           name: javax.persistence.EntityManager
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import com.redhat.coolstore.utils.Transformers;\n 5  \n 6  import javax.inject.Inject;\n
@@ -3279,12 +3279,12 @@
           = 50;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.service
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
         message: Replace the `javax.jms` import statement with `jakarta.jms`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import com.redhat.coolstore.utils.Transformers;\n 5  \n 6  import javax.inject.Inject;\n
@@ -3295,12 +3295,12 @@
           = 50;\n17  "
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
           kind: Module
           name: javax.jms
           package: com.redhat.coolstore.service
           renamed: jms
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import java.util.List;\n 5  import javax.ejb.Stateless;\n 6  import javax.inject.Inject;\n
@@ -3309,12 +3309,12 @@
           \ \n12  @Stateless\n13  public class OrderService {\n14  \n15  @Inject"
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
           kind: Module
           name: javax.ejb.Stateless
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import java.util.List;\n 5  import javax.ejb.Stateless;\n 6  import javax.inject.Inject;\n
@@ -3324,12 +3324,12 @@
           \ private EntityManager em;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.service
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import java.util.List;\n 5  import javax.ejb.Stateless;\n 6  import javax.inject.Inject;\n
@@ -3339,12 +3339,12 @@
           \ private EntityManager em;\n17  "
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
           kind: Module
           name: javax.persistence.EntityManager
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import java.util.List;\n 5  import javax.ejb.Stateless;\n 6  import javax.inject.Inject;\n
@@ -3354,12 +3354,12 @@
           \ private EntityManager em;\n17  \n18  public void save(Order order) {"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
           kind: Module
           name: javax.persistence.criteria.CriteriaBuilder
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import java.util.List;\n 5  import javax.ejb.Stateless;\n 6  import javax.inject.Inject;\n
@@ -3370,12 +3370,12 @@
           \ em.persist(order);"
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
           kind: Module
           name: javax.persistence.criteria.CriteriaQuery
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
         message: Replace the `javax.persistence` import statement with `jakarta.persistence`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import java.util.List;\n 5  import javax.ejb.Stateless;\n 6  import javax.inject.Inject;\n
@@ -3386,12 +3386,12 @@
           \ em.persist(order);\n20  }"
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
           kind: Module
           name: javax.persistence.criteria.Root
           package: com.redhat.coolstore.service
           renamed: persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -3401,12 +3401,12 @@
           \ "
         lineNumber: 3
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.ejb.ActivationConfigProperty
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -3416,12 +3416,12 @@
           \ \n14  @MessageDriven(name = \"OrderServiceMDB\", activationConfig = {"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.ejb.MessageDriven
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -3433,12 +3433,12 @@
           = \"topic/orders\"),"
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.service
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: Replace the `javax.jms` import statement with `jakarta.jms`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -3451,12 +3451,12 @@
           propertyValue = \"javax.jms.Topic\"),"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.jms.JMSException
           package: com.redhat.coolstore.service
           renamed: jms
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: Replace the `javax.jms` import statement with `jakarta.jms`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -3470,12 +3470,12 @@
           = \"acknowledgeMode\", propertyValue = \"Auto-acknowledge\")})"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.jms.Message
           package: com.redhat.coolstore.service
           renamed: jms
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: Replace the `javax.jms` import statement with `jakarta.jms`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -3490,12 +3490,12 @@
           class OrderServiceMDB implements MessageListener {"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.jms.MessageListener
           package: com.redhat.coolstore.service
           renamed: jms
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: Replace the `javax.jms` import statement with `jakarta.jms`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -3510,12 +3510,12 @@
           class OrderServiceMDB implements MessageListener {\n19  "
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.jms.TextMessage
           package: com.redhat.coolstore.service
           renamed: jms
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ProductService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ProductService.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.CatalogItemEntity;\n
           4  import com.redhat.coolstore.model.Product;\n 5  import com.redhat.coolstore.utils.Transformers;\n
@@ -3525,12 +3525,12 @@
           \ @Stateless\n15  public class ProductService {\n16  \n17  @Inject"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ProductService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ProductService.java
           kind: Module
           name: javax.ejb.Stateless
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ProductService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ProductService.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.CatalogItemEntity;\n
           4  import com.redhat.coolstore.model.Product;\n 5  import com.redhat.coolstore.utils.Transformers;\n
@@ -3541,12 +3541,12 @@
           cm;"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ProductService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ProductService.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.service
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/PromoService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/PromoService.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.HashMap;\n 5  import java.util.HashSet;\n 6  import
@@ -3557,12 +3557,12 @@
           static final long serialVersionUID = 2088590587856645568L;\n19  "
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/PromoService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/PromoService.java
           kind: Module
           name: javax.enterprise.context.ApplicationScoped
           package: com.redhat.coolstore.service
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShippingService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShippingService.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.math.BigDecimal;\n
           4  import java.math.RoundingMode;\n 5  \n 6  import javax.ejb.Remote;\n
@@ -3572,12 +3572,12 @@
           sc) {"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShippingService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShippingService.java
           kind: Module
           name: javax.ejb.Remote
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShippingService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShippingService.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.math.BigDecimal;\n
           4  import java.math.RoundingMode;\n 5  \n 6  import javax.ejb.Remote;\n
@@ -3587,12 +3587,12 @@
           sc) {\n17  "
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShippingService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShippingService.java
           kind: Module
           name: javax.ejb.Stateless
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.logging.Logger;\n
           4  import javax.ejb.Stateless;\n 5  import javax.annotation.Resource;\n
@@ -3602,12 +3602,12 @@
           \ public class ShoppingCartOrderProcessor  {"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
           kind: Module
           name: javax.ejb.Stateless
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
         message: Replace the `javax.annotation` import statement with `jakarta.annotation`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.logging.Logger;\n
           4  import javax.ejb.Stateless;\n 5  import javax.annotation.Resource;\n
@@ -3617,12 +3617,12 @@
           \ public class ShoppingCartOrderProcessor  {\n15  "
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
           kind: Module
           name: javax.annotation.Resource
           package: com.redhat.coolstore.service
           renamed: annotation
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.logging.Logger;\n
           4  import javax.ejb.Stateless;\n 5  import javax.annotation.Resource;\n
@@ -3632,12 +3632,12 @@
           \ public class ShoppingCartOrderProcessor  {\n15  \n16  @Inject"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.service
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
         message: Replace the `javax.jms` import statement with `jakarta.jms`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.logging.Logger;\n
           4  import javax.ejb.Stateless;\n 5  import javax.annotation.Resource;\n
@@ -3648,12 +3648,12 @@
           log;"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
           kind: Module
           name: javax.jms.JMSContext
           package: com.redhat.coolstore.service
           renamed: jms
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
         message: Replace the `javax.jms` import statement with `jakarta.jms`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.logging.Logger;\n
           4  import javax.ejb.Stateless;\n 5  import javax.annotation.Resource;\n
@@ -3664,12 +3664,12 @@
           log;\n18  "
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
           kind: Module
           name: javax.jms.Topic
           package: com.redhat.coolstore.service
           renamed: jms
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.Hashtable;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.ejb.Stateful;\n
@@ -3679,12 +3679,12 @@
           \ import com.redhat.coolstore.model.ShoppingCartItem;\n15  \n16  @Stateful"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
           kind: Module
           name: javax.ejb.Stateful
           package: com.redhat.coolstore.service
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.Hashtable;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.ejb.Stateful;\n
@@ -3695,12 +3695,12 @@
           \ public class ShoppingCartService  {"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.service
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: Replace the `javax.annotation` import statement with `jakarta.annotation`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -3711,12 +3711,12 @@
           \ import java.util.logging.Logger;\n16  "
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.annotation.PostConstruct
           package: com.redhat.coolstore.utils
           renamed: annotation
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: Replace the `javax.annotation` import statement with `jakarta.annotation`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -3727,12 +3727,12 @@
           \ import java.util.logging.Logger;\n16  \n17  /**"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.annotation.Resource
           package: com.redhat.coolstore.utils
           renamed: annotation
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -3744,12 +3744,12 @@
           on 2017-04-04."
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.ejb.Singleton
           package: com.redhat.coolstore.utils
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -3761,12 +3761,12 @@
           on 2017-04-04.\n19  */"
         lineNumber: 9
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.ejb.Startup
           package: com.redhat.coolstore.utils
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -3778,12 +3778,12 @@
           on 2017-04-04.\n19  */\n20  @Singleton"
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.ejb.TransactionManagement
           package: com.redhat.coolstore.utils
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: Replace the `javax.ejb` import statement with `jakarta.ejb`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -3795,12 +3795,12 @@
           on 2017-04-04.\n19  */\n20  @Singleton\n21  @Startup"
         lineNumber: 11
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.ejb.TransactionManagementType
           package: com.redhat.coolstore.utils
           renamed: ejb
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 2  \n 3  import org.flywaydb.core.Flyway;\n 4  import org.flywaydb.core.api.FlywayException;\n
           5  \n 6  import javax.annotation.PostConstruct;\n 7  import javax.annotation.Resource;\n
@@ -3812,12 +3812,12 @@
           \ @Startup\n22  @TransactionManagement(TransactionManagementType.BEAN)"
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.utils
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import javax.enterprise.inject.Produces;\n
           4  import javax.enterprise.inject.spi.InjectionPoint;\n 5  import java.util.logging.Logger;\n
@@ -3826,12 +3826,12 @@
           {"
         lineNumber: 3
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
           kind: Module
           name: javax.enterprise.inject.Produces
           package: com.redhat.coolstore.utils
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
         message: Replace the `javax.enterprise` import statement with `jakarta.enterprise`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import javax.enterprise.inject.Produces;\n
           4  import javax.enterprise.inject.spi.InjectionPoint;\n 5  import java.util.logging.Logger;\n
@@ -3840,12 +3840,12 @@
           {\n14  return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
           kind: Module
           name: javax.enterprise.inject.spi.InjectionPoint
           package: com.redhat.coolstore.utils
           renamed: enterprise
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
         message: Replace the `javax.inject` import statement with `jakarta.inject`
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import weblogic.application.ApplicationLifecycleEvent;\n
           4  import weblogic.application.ApplicationLifecycleListener;\n 5  \n 6  import
@@ -3855,12 +3855,12 @@
           evt) {\n16  log.info(\"AppListener(postStart)\");"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
           kind: Module
           name: javax.inject.Inject
           package: com.redhat.coolstore.utils
           renamed: inject
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: Replace the `javax.json` import statement with `jakarta.json`
         codeSnip: "\n 2  \n 3  import com.redhat.coolstore.model.CatalogItemEntity;\n
           4  import com.redhat.coolstore.model.Order;\n 5  import com.redhat.coolstore.model.OrderItem;\n
@@ -3873,12 +3873,12 @@
           \ import java.util.logging.Logger;\n21  \n22  /**"
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json.Json
           package: com.redhat.coolstore.utils
           renamed: json
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: Replace the `javax.json` import statement with `jakarta.json`
         codeSnip: "\n 3  import com.redhat.coolstore.model.CatalogItemEntity;\n 4
           \ import com.redhat.coolstore.model.Order;\n 5  import com.redhat.coolstore.model.OrderItem;\n
@@ -3892,12 +3892,12 @@
           on 2017-03-30."
         lineNumber: 13
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json.JsonArray
           package: com.redhat.coolstore.utils
           renamed: json
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: Replace the `javax.json` import statement with `jakarta.json`
         codeSnip: "\n 4  import com.redhat.coolstore.model.Order;\n 5  import com.redhat.coolstore.model.OrderItem;\n
           6  import com.redhat.coolstore.model.Product;\n 7  import com.redhat.coolstore.model.ShoppingCart;\n
@@ -3910,12 +3910,12 @@
           on 2017-03-30.\n24  */"
         lineNumber: 14
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json.JsonArrayBuilder
           package: com.redhat.coolstore.utils
           renamed: json
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: Replace the `javax.json` import statement with `jakarta.json`
         codeSnip: "\n 5  import com.redhat.coolstore.model.OrderItem;\n 6  import
           com.redhat.coolstore.model.Product;\n 7  import com.redhat.coolstore.model.ShoppingCart;\n
@@ -3928,12 +3928,12 @@
           on 2017-03-30.\n24  */\n25  public class Transformers {"
         lineNumber: 15
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json.JsonObject
           package: com.redhat.coolstore.utils
           renamed: json
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: Replace the `javax.json` import statement with `jakarta.json`
         codeSnip: "\n 6  import com.redhat.coolstore.model.Product;\n 7  import com.redhat.coolstore.model.ShoppingCart;\n
           8  import java.io.StringReader;\n 9  import java.io.StringWriter;\n10  import
@@ -3945,12 +3945,12 @@
           on 2017-03-30.\n24  */\n25  public class Transformers {\n26  "
         lineNumber: 16
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json.JsonReader
           package: com.redhat.coolstore.utils
           renamed: json
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: Replace the `javax.json` import statement with `jakarta.json`
         codeSnip: "\n 7  import com.redhat.coolstore.model.ShoppingCart;\n 8  import
           java.io.StringReader;\n 9  import java.io.StringWriter;\n10  import java.util.ArrayList;\n11
@@ -3964,7 +3964,7 @@
           Olson\",\"Martin Ericsson\"};"
         lineNumber: 17
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json.JsonWriter
           package: com.redhat.coolstore.utils
@@ -4387,7 +4387,7 @@
       - konveyor.io/include=always
       - tag=CDI
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.persistence;\n 2  \n 3  import
           javax.enterprise.context.Dependent;\n 4  import javax.enterprise.inject.Produces;\n
@@ -4396,11 +4396,11 @@
           \ private EntityManager em;\n13  \n14  @Produces"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/persistence/Resources.java
+          file: file:///source/src/main/java/com/redhat/coolstore/persistence/Resources.java
           kind: Module
           name: javax.enterprise.inject
           package: com.redhat.coolstore.persistence
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.ArrayList;\n 5  import java.util.HashMap;\n 6  import
@@ -4412,11 +4412,11 @@
           \ import com.redhat.coolstore.model.ShoppingCart;"
         lineNumber: 10
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -4427,11 +4427,11 @@
           \ "
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.rest;\n 2  \n 3  import java.io.Serializable;\n
           4  import java.util.List;\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n
@@ -4441,11 +4441,11 @@
           \ @Produces(MediaType.APPLICATION_JSON)"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.List;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.inject.Inject;\n
@@ -4455,11 +4455,11 @@
           \ \n15  import com.redhat.coolstore.model.*;\n16  "
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/CatalogService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/CatalogService.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import com.redhat.coolstore.utils.Transformers;\n 5  \n 6  import javax.inject.Inject;\n
@@ -4470,11 +4470,11 @@
           = 50;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/InventoryNotificationMDB.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.Order;\n
           4  import java.util.List;\n 5  import javax.ejb.Stateless;\n 6  import javax.inject.Inject;\n
@@ -4484,11 +4484,11 @@
           \ private EntityManager em;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderService.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import javax.ejb.ActivationConfigProperty;\n
           4  import javax.ejb.MessageDriven;\n 5  import javax.inject.Inject;\n 6
@@ -4500,11 +4500,11 @@
           = \"topic/orders\"),"
         lineNumber: 5
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/OrderServiceMDB.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ProductService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ProductService.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import com.redhat.coolstore.model.CatalogItemEntity;\n
           4  import com.redhat.coolstore.model.Product;\n 5  import com.redhat.coolstore.utils.Transformers;\n
@@ -4515,11 +4515,11 @@
           cm;"
         lineNumber: 8
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ProductService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ProductService.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.logging.Logger;\n
           4  import javax.ejb.Stateless;\n 5  import javax.annotation.Resource;\n
@@ -4529,11 +4529,11 @@
           \ public class ShoppingCartOrderProcessor  {\n15  \n16  @Inject"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.Hashtable;\n
           4  import java.util.logging.Logger;\n 5  \n 6  import javax.ejb.Stateful;\n
@@ -4544,11 +4544,11 @@
           \ public class ShoppingCartService  {"
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartService.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: ""
         codeSnip: "\n 2  \n 3  import org.flywaydb.core.Flyway;\n 4  import org.flywaydb.core.api.FlywayException;\n
           5  \n 6  import javax.annotation.PostConstruct;\n 7  import javax.annotation.Resource;\n
@@ -4560,11 +4560,11 @@
           \ @Startup\n22  @TransactionManagement(TransactionManagementType.BEAN)"
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import javax.enterprise.inject.Produces;\n
           4  import javax.enterprise.inject.spi.InjectionPoint;\n 5  import java.util.logging.Logger;\n
@@ -4573,11 +4573,11 @@
           {"
         lineNumber: 3
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
           kind: Module
           name: javax.enterprise.inject
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import javax.enterprise.inject.Produces;\n
           4  import javax.enterprise.inject.spi.InjectionPoint;\n 5  import java.util.logging.Logger;\n
@@ -4586,11 +4586,11 @@
           {\n14  return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());"
         lineNumber: 4
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Producers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Producers.java
           kind: Module
           name: javax.enterprise.inject.spi
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import weblogic.application.ApplicationLifecycleEvent;\n
           4  import weblogic.application.ApplicationLifecycleListener;\n 5  \n 6  import
@@ -4600,7 +4600,7 @@
           evt) {\n16  log.info(\"AppListener(postStart)\");"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/StartupListener.java
           kind: Module
           name: javax.inject
           package: com.redhat.coolstore.utils
@@ -4625,7 +4625,7 @@
       - konveyor.io/include=always
       - tag=Java EE JSON-P
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: ""
         codeSnip: "\n 2  \n 3  import com.redhat.coolstore.model.CatalogItemEntity;\n
           4  import com.redhat.coolstore.model.Order;\n 5  import com.redhat.coolstore.model.OrderItem;\n
@@ -4638,11 +4638,11 @@
           \ import java.util.logging.Logger;\n21  \n22  /**"
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: ""
         codeSnip: "\n 3  import com.redhat.coolstore.model.CatalogItemEntity;\n 4
           \ import com.redhat.coolstore.model.Order;\n 5  import com.redhat.coolstore.model.OrderItem;\n
@@ -4656,11 +4656,11 @@
           on 2017-03-30."
         lineNumber: 13
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: ""
         codeSnip: "\n 4  import com.redhat.coolstore.model.Order;\n 5  import com.redhat.coolstore.model.OrderItem;\n
           6  import com.redhat.coolstore.model.Product;\n 7  import com.redhat.coolstore.model.ShoppingCart;\n
@@ -4673,11 +4673,11 @@
           on 2017-03-30.\n24  */"
         lineNumber: 14
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: ""
         codeSnip: "\n 5  import com.redhat.coolstore.model.OrderItem;\n 6  import
           com.redhat.coolstore.model.Product;\n 7  import com.redhat.coolstore.model.ShoppingCart;\n
@@ -4690,11 +4690,11 @@
           on 2017-03-30.\n24  */\n25  public class Transformers {"
         lineNumber: 15
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: ""
         codeSnip: "\n 6  import com.redhat.coolstore.model.Product;\n 7  import com.redhat.coolstore.model.ShoppingCart;\n
           8  import java.io.StringReader;\n 9  import java.io.StringWriter;\n10  import
@@ -4706,11 +4706,11 @@
           on 2017-03-30.\n24  */\n25  public class Transformers {\n26  "
         lineNumber: 16
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
         message: ""
         codeSnip: "\n 7  import com.redhat.coolstore.model.ShoppingCart;\n 8  import
           java.io.StringReader;\n 9  import java.io.StringWriter;\n10  import java.util.ArrayList;\n11
@@ -4724,7 +4724,7 @@
           Olson\",\"Martin Ericsson\"};"
         lineNumber: 17
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/Transformers.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/Transformers.java
           kind: Module
           name: javax.json
           package: com.redhat.coolstore.utils
@@ -4749,7 +4749,7 @@
       - konveyor.io/include=always
       - tag=Common Annotations
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.service;\n 2  \n 3  import java.util.logging.Logger;\n
           4  import javax.ejb.Stateless;\n 5  import javax.annotation.Resource;\n
@@ -4760,11 +4760,11 @@
         lineNumber: 5
         variables:
           annotation: Resource
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
+          file: file:///source/src/main/java/com/redhat/coolstore/service/ShoppingCartOrderProcessor.java
           kind: Module
           name: javax.annotation.Resource
           package: com.redhat.coolstore.service
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -4776,11 +4776,11 @@
         lineNumber: 6
         variables:
           annotation: PostConstruct
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.annotation.PostConstruct
           package: com.redhat.coolstore.utils
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.utils;\n 2  \n 3  import org.flywaydb.core.Flyway;\n
           4  import org.flywaydb.core.api.FlywayException;\n 5  \n 6  import javax.annotation.PostConstruct;\n
@@ -4792,7 +4792,7 @@
         lineNumber: 7
         variables:
           annotation: Resource
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
+          file: file:///source/src/main/java/com/redhat/coolstore/utils/DataBaseMigrationStartup.java
           kind: Module
           name: javax.annotation.Resource
           package: com.redhat.coolstore.utils
@@ -4861,7 +4861,7 @@
       - tag=Java EE=RMI
       - tag=Other=RMI
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: ""
         codeSnip: "\n15  import javax.ws.rs.PathParam;\n16  import javax.ws.rs.Produces;\n17
           \ import javax.ws.rs.core.MediaType;\n18  \n19  import com.redhat.coolstore.model.Product;\n20
@@ -4873,11 +4873,11 @@
           \ \n33  @GET\n34  @Path(\"/{cartId}\")\n35  @Produces(MediaType.APPLICATION_JSON)"
         lineNumber: 25
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Property
           name: SessionScoped
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: ""
         codeSnip: "\n24  @SessionScoped\n25  @Path(\"/cart\")\n26  public class CartEndpoint
           implements Serializable {\n27  \n28  private static final long serialVersionUID
@@ -4890,11 +4890,11 @@
           \ return shoppingCartService.checkOutShoppingCart(cartId);"
         lineNumber: 34
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Property
           name: GET
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: ""
         codeSnip: "\n31  private ShoppingCartService shoppingCartService;\n32  \n33
           \ @GET\n34  @Path(\"/{cartId}\")\n35  @Produces(MediaType.APPLICATION_JSON)\n36
@@ -4908,11 +4908,11 @@
           String itemId,"
         lineNumber: 41
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Property
           name: POST
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: ""
         codeSnip: "\n38  }\n39  \n40  @POST\n41  @Path(\"/checkout/{cartId}\")\n42
           \ @Produces(MediaType.APPLICATION_JSON)\n43  public ShoppingCart checkout(@PathParam(\"cartId\")
@@ -4925,11 +4925,11 @@
           \ ShoppingCartItem sci = new ShoppingCartItem();\n58  sci.setProduct(product);"
         lineNumber: 48
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Property
           name: POST
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: ""
         codeSnip: "\n65  cart.setShoppingCartItemList(dedupeCartItems(cart.getShoppingCartItemList()));\n66
           \ } catch (Exception ex) {\n67  cart.removeShoppingCartItem(sci);\n68  throw
@@ -4942,11 +4942,11 @@
           \ cart.setShoppingCartItemList(tmpCart.getShoppingCartItemList());"
         lineNumber: 75
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Property
           name: POST
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
         message: ""
         codeSnip: "\n 89  shoppingCartService.priceShoppingCart(cart);\n 90  cart.setShoppingCartItemList(dedupeCartItems(cart.getShoppingCartItemList()));\n
           91  } catch (Exception ex) {\n 92  throw ex;\n 93  }\n 94  \n 95  return
@@ -4958,11 +4958,11 @@
           \ \n109  cart.getShoppingCartItemList().stream()"
         lineNumber: 99
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/CartEndpoint.java
           kind: Property
           name: DELETE
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: ""
         codeSnip: "\n 9  import javax.ws.rs.GET;\n10  import javax.ws.rs.Path;\n11
           \ import javax.ws.rs.PathParam;\n12  import javax.ws.rs.Produces;\n13  import
@@ -4974,11 +4974,11 @@
           \ private OrderService os;\n28  \n29  "
         lineNumber: 19
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Property
           name: RequestScoped
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: ""
         codeSnip: "\n21  @Produces(MediaType.APPLICATION_JSON)\n22  public class OrderEndpoint
           implements Serializable {\n23  \n24  private static final long serialVersionUID
@@ -4989,11 +4989,11 @@
           os.getOrderById(orderId);\n40  }\n41  "
         lineNumber: 31
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Property
           name: GET
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
         message: ""
         codeSnip: "\n27  private OrderService os;\n28  \n29  \n30  @GET\n31  @Path(\"/\")\n32
           \ public List<Order> listAll() {\n33  return os.getOrders();\n34  }\n35
@@ -5001,11 +5001,11 @@
           long orderId) {\n39  return os.getOrderById(orderId);\n40  }\n41  \n42  }"
         lineNumber: 37
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/OrderEndpoint.java
           kind: Property
           name: GET
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: ""
         codeSnip: "\n 5  \n 6  import javax.enterprise.context.RequestScoped;\n 7
           \ import javax.inject.Inject;\n 8  import javax.ws.rs.*;\n 9  import javax.ws.rs.core.MediaType;\n10
@@ -5016,11 +5016,11 @@
           final long serialVersionUID = -7227732980791688773L;\n24  \n25  @Inject"
         lineNumber: 15
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Property
           name: RequestScoped
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: ""
         codeSnip: "\n20  /**\n21  *\n22  */\n23  private static final long serialVersionUID
           = -7227732980791688773L;\n24  \n25  @Inject\n26  private ProductService
@@ -5030,11 +5030,11 @@
           \ return pm.getProductByItemId(itemId);\n39  }\n40  "
         lineNumber: 30
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Property
           name: GET
           package: com.redhat.coolstore.rest
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
         message: ""
         codeSnip: "\n26  private ProductService pm;\n27  \n28  \n29  @GET\n30  @Path(\"/\")\n31
           \ public List<Product> listAll() {\n32  return pm.getProducts();\n33  }\n34
@@ -5043,7 +5043,7 @@
           \ }"
         lineNumber: 36
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
+          file: file:///source/src/main/java/com/redhat/coolstore/rest/ProductEndpoint.java
           kind: Property
           name: GET
           package: com.redhat.coolstore.rest
@@ -5083,7 +5083,7 @@
       - tag=Persistence=JPA named queries
       - tag=Store=JPA named queries
       incidents:
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import javax.persistence.*;\n
           4  import java.io.Serializable;\n 5  \n 6  @Entity\n 7  @Table(name = \"PRODUCT_CATALOG\",
@@ -5094,11 +5094,11 @@
           name;"
         lineNumber: 6
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import javax.persistence.*;\n
           4  import java.io.Serializable;\n 5  \n 6  @Entity\n 7  @Table(name = \"PRODUCT_CATALOG\",
@@ -5109,11 +5109,11 @@
           name;\n17  "
         lineNumber: 7
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/CatalogItemEntity.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: ""
         codeSnip: "\n 2  \n 3  import java.io.Serializable;\n 4  \n 5  import javax.persistence.Column;\n
           6  import javax.persistence.Entity;\n 7  import javax.persistence.Id;\n
@@ -5126,11 +5126,11 @@
           \ "
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
         message: ""
         codeSnip: "\n 4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
           7  import javax.persistence.Id;\n 8  import javax.persistence.Table;\n 9
@@ -5142,11 +5142,11 @@
           \ \n23  @Column\n24  private String location;"
         lineNumber: 14
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/InventoryEntity.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: ""
         codeSnip: "\n 7  import javax.persistence.CascadeType;\n 8  import javax.persistence.Column;\n
           9  import javax.persistence.Entity;\n10  import javax.persistence.FetchType;\n11
@@ -5158,11 +5158,11 @@
           \ private long orderId;\n26  \n27  private String customerName;"
         lineNumber: 17
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
         message: ""
         codeSnip: "\n 8  import javax.persistence.Column;\n 9  import javax.persistence.Entity;\n10
           \ import javax.persistence.FetchType;\n11  import javax.persistence.GeneratedValue;\n12
@@ -5174,11 +5174,11 @@
           String customerName;\n28  "
         lineNumber: 18
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/Order.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/Order.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
         message: ""
         codeSnip: "\n 1  package com.redhat.coolstore.model;\n 2  \n 3  import java.io.Serializable;\n
           4  \n 5  import javax.persistence.Column;\n 6  import javax.persistence.Entity;\n
@@ -5190,11 +5190,11 @@
           \ \n21  private int quantity;"
         lineNumber: 11
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model
-      - uri: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+      - uri: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
         message: ""
         codeSnip: "\n 2  \n 3  import java.io.Serializable;\n 4  \n 5  import javax.persistence.Column;\n
           6  import javax.persistence.Entity;\n 7  import javax.persistence.GeneratedValue;\n
@@ -5205,7 +5205,7 @@
           \ private long id;\n20  \n21  private int quantity;\n22  "
         lineNumber: 12
         variables:
-          file: file:///opt/input/source/src/main/java/com/redhat/coolstore/model/OrderItem.java
+          file: file:///source/src/main/java/com/redhat/coolstore/model/OrderItem.java
           kind: Property
           name: Entity
           package: com.redhat.coolstore.model

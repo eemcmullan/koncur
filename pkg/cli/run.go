@@ -8,12 +8,14 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
+	konveyor "github.com/konveyor/analyzer-lsp/output/v1/konveyor"
 	"github.com/konveyor/test-harness/pkg/config"
 	"github.com/konveyor/test-harness/pkg/parser"
 	"github.com/konveyor/test-harness/pkg/targets"
 	"github.com/konveyor/test-harness/pkg/util"
 	"github.com/konveyor/test-harness/pkg/validator"
 	"github.com/spf13/cobra"
+	yaml "gopkg.in/yaml.v2"
 )
 
 var (
@@ -126,11 +128,19 @@ You can provide either:
 			// Run all tests
 			successCount := 0
 			failCount := 0
+			skippedCount := 0
 
 			for i, testFile := range testFiles {
 				testName := filepath.Base(filepath.Dir(testFile))
 				if len(testFiles) > 1 {
 					fmt.Printf("\n[%d/%d] Running: %s\n", i+1, len(testFiles), testName)
+				}
+
+				// Check if test is marked as skipped
+				if isTestSkipped(testFile) {
+					color.Yellow("  ⊘ Skipped (marked as SKIPPED in file)")
+					skippedCount++
+					continue
 				}
 
 				// Run single test
@@ -154,6 +164,9 @@ You can provide either:
 				fmt.Printf("Summary: %d total\n", len(testFiles))
 				if successCount > 0 {
 					color.Green("  ✓ Passed: %d", successCount)
+				}
+				if skippedCount > 0 {
+					color.Yellow("  ⊘ Skipped: %d", skippedCount)
 				}
 				if failCount > 0 {
 					color.Red("  ✗ Failed: %d", failCount)
@@ -209,6 +222,12 @@ func runSingleTest(testFile string, target targets.Target, targetConfig *config.
 	// Filter actual output to match how expected output is filtered during generation
 	filteredActual := parser.FilterRuleSets(actualOutput)
 
+	// Normalize paths in actual output to match expected output format
+	normalizedActual, err := normalizeRuleSetPaths(filteredActual, test.GetTestDir())
+	if err != nil {
+		return false, fmt.Errorf("failed to normalize paths: %w", err)
+	}
+
 	// Get target type for validation
 	tgtType := ""
 	if targetConfig != nil {
@@ -216,7 +235,7 @@ func runSingleTest(testFile string, target targets.Target, targetConfig *config.
 	}
 
 	// Validate against expected output using the filtered file
-	validation, err := validator.ValidateFiles(test.GetTestDir(), tgtType, filteredActual, test.Expect.Output.Result)
+	validation, err := validator.ValidateFiles(test.GetTestDir(), tgtType, normalizedActual, test.Expect.Output.Result)
 	if err != nil {
 		return false, fmt.Errorf("validation error: %w", err)
 	}
@@ -249,4 +268,42 @@ func runSingleTest(testFile string, target targets.Target, targetConfig *config.
 	}
 
 	return false, nil
+}
+
+// normalizeRuleSetPaths normalizes file paths in rulesets to match the expected output format
+// This applies the same normalization that saveFilteredOutput does when generating expected output
+func normalizeRuleSetPaths(rulesets []konveyor.RuleSet, testDir string) ([]konveyor.RuleSet, error) {
+	// Marshal to YAML to normalize paths using string replacement (same approach as generate)
+	data, err := yaml.Marshal(rulesets)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal rulesets: %w", err)
+	}
+
+	yamlStr := string(data)
+
+	// Normalize paths by removing the test directory path
+	if testDir != "" {
+		yamlStr = strings.ReplaceAll(yamlStr, testDir, "")
+	}
+
+	// Normalize Maven repository paths
+	if strings.Contains(yamlStr, "/root/.m2/repository") {
+		yamlStr = strings.ReplaceAll(yamlStr, "/root/.m2/repository/", "/m2/")
+	}
+	if strings.Contains(yamlStr, "/cache/m2/") {
+		yamlStr = strings.ReplaceAll(yamlStr, "/cache/m2/", "/m2/")
+	}
+
+	// Normalize Tackle Hub container paths
+	if strings.Contains(yamlStr, "/opt/input/source/") {
+		yamlStr = strings.ReplaceAll(yamlStr, "/opt/input/source", "/source")
+	}
+
+	// Unmarshal back to get normalized rulesets
+	var normalized []konveyor.RuleSet
+	if err := yaml.Unmarshal([]byte(yamlStr), &normalized); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal normalized rulesets: %w", err)
+	}
+
+	return normalized, nil
 }
