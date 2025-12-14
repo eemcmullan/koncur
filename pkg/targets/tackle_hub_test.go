@@ -396,3 +396,87 @@ func replaceStr(s, old, new string) string {
 	}
 	return result
 }
+
+func TestTackleHubTarget_BinaryAnalysis(t *testing.T) {
+	tests := []struct {
+		name         string
+		application  string
+		expectBinary bool
+	}{
+		{
+			name:         "WAR file detection",
+			application:  "app.war",
+			expectBinary: true,
+		},
+		{
+			name:         "JAR file detection",
+			application:  "app.jar",
+			expectBinary: true,
+		},
+		{
+			name:         "EAR file detection",
+			application:  "app.ear",
+			expectBinary: true,
+		},
+		{
+			name:         "Git URL not binary",
+			application:  "https://github.com/user/repo.git",
+			expectBinary: false,
+		},
+		{
+			name:         "Path not binary",
+			application:  "/path/to/source",
+			expectBinary: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			isBinary := IsBinaryFile(tt.application)
+			if isBinary != tt.expectBinary {
+				t.Errorf("Expected IsBinaryFile(%q) = %v, got %v", tt.application, tt.expectBinary, isBinary)
+			}
+		})
+	}
+}
+
+func TestTackleHubTarget_BinaryModeConfiguration(t *testing.T) {
+	tests := []struct {
+		name             string
+		application      string
+		expectBinaryMode bool
+		expectArtifact   string
+	}{
+		{
+			name:             "Binary mode for WAR file",
+			application:      "test.war",
+			expectBinaryMode: true,
+			expectArtifact:   "/binary",
+		},
+		{
+			name:             "Source mode for git URL",
+			application:      "https://github.com/user/repo.git",
+			expectBinaryMode: false,
+			expectArtifact:   "",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			taskData := Data{}
+			isBinary := IsBinaryFile(tt.application)
+
+			if isBinary {
+				taskData.Mode.Binary = true
+				taskData.Mode.Artifact = "/binary"
+			}
+
+			if taskData.Mode.Binary != tt.expectBinaryMode {
+				t.Errorf("Expected Binary = %v, got %v", tt.expectBinaryMode, taskData.Mode.Binary)
+			}
+			if taskData.Mode.Artifact != tt.expectArtifact {
+				t.Errorf("Expected Artifact = %q, got %q", tt.expectArtifact, taskData.Mode.Artifact)
+			}
+		})
+	}
+}

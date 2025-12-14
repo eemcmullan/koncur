@@ -166,10 +166,16 @@ func (k *KantraTarget) buildArgs(analysis config.AnalysisConfig, inputPath, outp
 	return args
 }
 
-// prepareInput handles git URLs and local paths
+// prepareInput handles git URLs, local paths, and binary files
 // Returns the local path to use as input for kantra
 func (k *KantraTarget) prepareInput(ctx context.Context, application, testName, workDir string) (string, error) {
 	log := util.GetLogger()
+
+	// Check if it's a binary file (.jar, .war, .ear)
+	if IsBinaryFile(application) {
+		log.Info("Detected binary input", "file", application)
+		return k.prepareBinary(application, workDir)
+	}
 
 	// Check if it's a git URL (starts with http://, https://, or git@)
 	// or contains a git reference (has #branch)
@@ -179,7 +185,7 @@ func (k *KantraTarget) prepareInput(ctx context.Context, application, testName, 
 
 	if !isGitURL {
 		// It's a local path or binary reference
-		// Handle binary: prefix
+		// Handle binary: prefix (legacy support)
 		if strings.HasPrefix(application, "binary:") {
 			// Extract the binary file name
 			binaryFile := application[7:] // Remove "binary:" prefix
@@ -191,25 +197,39 @@ func (k *KantraTarget) prepareInput(ctx context.Context, application, testName, 
 		return application, nil
 	}
 
-	// Parse git URL and reference
-	var gitURL, gitRef string
+	// Parse git URL, reference, and path
+	// Format: git_url#branch/path/to/subdir
+	var gitURL, gitRef, gitPath string
 	if strings.Contains(application, "#") {
 		parts := strings.SplitN(application, "#", 2)
 		gitURL = parts[0]
 		if len(parts) > 1 {
-			gitRef = parts[1]
+			// Split the reference on "/" to separate branch from path
+			refParts := strings.SplitN(parts[1], "/", 2)
+			gitRef = refParts[0]
+			if len(refParts) > 1 {
+				gitPath = refParts[1]
+			}
 		}
 	} else {
 		gitURL = application
 	}
 
 	// Clone the git repository into workDir/source folder
-	inputDir := filepath.Join(workDir, "source")
+	cloneDir := filepath.Join(workDir, "source")
 
-	// Get absolute path
-	absInputDir, err := filepath.Abs(inputDir)
+	// Get absolute path for clone directory
+	absCloneDir, err := filepath.Abs(cloneDir)
 	if err != nil {
 		return "", fmt.Errorf("failed to get absolute path: %w", err)
+	}
+
+	// Determine the final input directory (may be a subdirectory if path is specified)
+	var absInputDir string
+	if gitPath != "" {
+		absInputDir = filepath.Join(absCloneDir, gitPath)
+	} else {
+		absInputDir = absCloneDir
 	}
 
 	// Check if directory already exists
@@ -218,14 +238,14 @@ func (k *KantraTarget) prepareInput(ctx context.Context, application, testName, 
 		return absInputDir, nil
 	}
 
-	log.Info("Cloning git repository", "url", gitURL, "ref", gitRef, "dest", absInputDir)
+	log.Info("Cloning git repository", "url", gitURL, "ref", gitRef, "path", gitPath, "dest", absCloneDir)
 
 	// Build git clone command
 	var gitArgs []string
 	if gitRef != "" {
-		gitArgs = []string{"clone", "--depth", "1", "--branch", gitRef, gitURL, absInputDir}
+		gitArgs = []string{"clone", "--depth", "1", "--branch", gitRef, gitURL, absCloneDir}
 	} else {
-		gitArgs = []string{"clone", "--depth", "1", gitURL, absInputDir}
+		gitArgs = []string{"clone", "--depth", "1", gitURL, absCloneDir}
 	}
 
 	// Execute git clone
@@ -236,5 +256,48 @@ func (k *KantraTarget) prepareInput(ctx context.Context, application, testName, 
 	}
 
 	log.Info("Git clone completed successfully")
+
+	// Remove .git directory to save space and avoid git-related issues
+	gitDir := filepath.Join(absCloneDir, ".git")
+	if err := os.RemoveAll(gitDir); err != nil {
+		log.Info("Warning: failed to remove .git directory", "error", err.Error())
+		// Don't fail the entire operation if we can't remove .git
+	} else {
+		log.Info("Removed .git directory", "path", gitDir)
+	}
+
+	// Verify the target path exists if specified
+	if gitPath != "" {
+		if _, err := os.Stat(absInputDir); err != nil {
+			return "", fmt.Errorf("specified path does not exist in repository: %s: %w", gitPath, err)
+		}
+		log.Info("Using subdirectory from repository", "path", gitPath, "fullPath", absInputDir)
+	}
+
 	return absInputDir, nil
+}
+
+// prepareBinary validates and resolves the path to a binary file (.jar, .war, .ear)
+// Returns the absolute path to the binary file
+func (k *KantraTarget) prepareBinary(binaryPath, testDir string) (string, error) {
+	log := util.GetLogger()
+
+	// Check if path is absolute
+	if filepath.IsAbs(binaryPath) {
+		if _, err := os.Stat(binaryPath); err != nil {
+			return "", fmt.Errorf("binary file not found: %w", err)
+		}
+		log.Info("Using absolute binary path", "path", binaryPath)
+		return binaryPath, nil
+	}
+
+	// Relative path - resolve relative to test directory
+	absPath := filepath.Join(testDir, binaryPath)
+
+	if _, err := os.Stat(absPath); err != nil {
+		return "", fmt.Errorf("binary file not found at %s: %w", absPath, err)
+	}
+
+	log.Info("Resolved relative binary path", "original", binaryPath, "resolved", absPath)
+	return absPath, nil
 }

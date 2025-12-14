@@ -1,22 +1,15 @@
-name: "Customer Tomcat Legacy - shoud never fail"
-description: ""
+name: Customer Tomcat Legacy - shoud never fail
 analysis:
-  application: "https://github.com/konveyor/example-applications.git#ci-2023/example-1"
-  labelSelector: "konveyor.io/target=cloud-readiness || konveyor.io/target=linux"
-  analysisMode: "source-only"
-timeout: 10m
+    application: https://github.com/konveyor/example-applications.git#ci-2023/example-1
+    labelSelector: konveyor.io/target=cloud-readiness || konveyor.io/target=linux
+    context_lines: 0
+    incident_selector: ""
+    source: []
+    target: []
+    rules: []
+    analysisMode: source-only
+timeout: 10m0s
 expect:
-  exitCode: 0
-  output:
-    result:
-      - name: "discovery-rules"
-        violations:
-          hardcoded-ip-address:
-            description: "Hardcoded IP Address"
-            category: "mandatory"
-            effort: 1
-            incidents:
-              - uri: "/shared/source/example-applications/example-1/src/main/resources/persistence.properties"
-                message: "When migrating environments, hard-coded IP addresses may need to be modified or eliminated."
-                lineNumber: 2
-                codeSnip: "jdbc.url=jdbc:oracle:thin:@169.60.225.216:1521/XEPDB1"
+    exitCode: 0
+    output:
+        file: expected-output.yaml

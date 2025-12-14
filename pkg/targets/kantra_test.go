@@ -1,6 +1,9 @@
 package targets
 
 import (
+	"context"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -293,6 +296,18 @@ func TestKantraTarget_PrepareInput(t *testing.T) {
 			isGitURL:    true,
 			expectError: false,
 		},
+		{
+			name:        "git URL with branch and path",
+			application: "https://github.com/konveyor-ecosystem/windup.git#ci-2024/test-files/seam-booking-5.2",
+			isGitURL:    true,
+			expectError: false,
+		},
+		{
+			name:        "git URL with branch and simple path",
+			application: "https://github.com/example/repo.git#main/subdir",
+			isGitURL:    true,
+			expectError: false,
+		},
 	}
 
 	for _, tt := range tests {
@@ -314,18 +329,31 @@ func TestKantraTarget_PrepareInput(t *testing.T) {
 				}
 			}
 
-			// Check git reference parsing
+			// Check git reference and path parsing
 			if strings.Contains(tt.application, "#") {
 				parts := strings.SplitN(tt.application, "#", 2)
 				if len(parts) != 2 {
 					t.Error("Failed to parse git reference")
 				}
 				gitURL := parts[0]
-				gitRef := parts[1]
-				if gitURL == "" || gitRef == "" {
+				refAndPath := parts[1]
+				if gitURL == "" || refAndPath == "" {
 					t.Error("Git URL or ref is empty after parsing")
 				}
-				t.Logf("Parsed git URL: %s, ref: %s", gitURL, gitRef)
+
+				// Parse ref and path
+				refParts := strings.SplitN(refAndPath, "/", 2)
+				gitRef := refParts[0]
+				var gitPath string
+				if len(refParts) > 1 {
+					gitPath = refParts[1]
+				}
+
+				if gitPath != "" {
+					t.Logf("Parsed git URL: %s, ref: %s, path: %s", gitURL, gitRef, gitPath)
+				} else {
+					t.Logf("Parsed git URL: %s, ref: %s", gitURL, gitRef)
+				}
 			}
 		})
 	}
@@ -468,6 +496,157 @@ func TestKantraTarget_ContextLines(t *testing.T) {
 
 			if !foundContextLines {
 				t.Error("Expected --context-lines flag not found")
+			}
+		})
+	}
+}
+
+func TestKantraTarget_PrepareBinary(t *testing.T) {
+	// Create temp directory with test JAR
+	tmpDir := t.TempDir()
+	jarPath := filepath.Join(tmpDir, "test.jar")
+	err := os.WriteFile(jarPath, []byte("fake jar content"), 0644)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	target := &KantraTarget{
+		binaryPath: "/usr/local/bin/kantra",
+	}
+
+	tests := []struct {
+		name        string
+		binaryPath  string
+		testDir     string
+		expectError bool
+		expectPath  string
+	}{
+		{
+			name:        "absolute path to existing JAR",
+			binaryPath:  jarPath,
+			testDir:     tmpDir,
+			expectError: false,
+			expectPath:  jarPath,
+		},
+		{
+			name:        "relative path to existing JAR",
+			binaryPath:  "test.jar",
+			testDir:     tmpDir,
+			expectError: false,
+			expectPath:  jarPath,
+		},
+		{
+			name:        "non-existent binary",
+			binaryPath:  "nonexistent.jar",
+			testDir:     tmpDir,
+			expectError: true,
+		},
+		{
+			name:        "absolute path to non-existent binary",
+			binaryPath:  "/nonexistent/path/app.war",
+			testDir:     tmpDir,
+			expectError: true,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := target.prepareBinary(tt.binaryPath, tt.testDir)
+
+			if tt.expectError {
+				if err == nil {
+					t.Error("Expected error but got none")
+				}
+			} else {
+				if err != nil {
+					t.Errorf("Unexpected error: %v", err)
+				}
+				if result != tt.expectPath {
+					t.Errorf("Expected path %s, got %s", tt.expectPath, result)
+				}
+			}
+		})
+	}
+}
+
+func TestKantraTarget_PrepareInputWithBinary(t *testing.T) {
+	// Create temp directory with test binaries
+	tmpDir := t.TempDir()
+	jarPath := filepath.Join(tmpDir, "app.jar")
+	warPath := filepath.Join(tmpDir, "app.war")
+
+	err := os.WriteFile(jarPath, []byte("fake jar"), 0644)
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = os.WriteFile(warPath, []byte("fake war"), 0644)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	target := &KantraTarget{
+		binaryPath: "/usr/local/bin/kantra",
+	}
+
+	tests := []struct {
+		name        string
+		application string
+		testDir     string
+		expectError bool
+		shouldExist bool
+	}{
+		{
+			name:        "absolute JAR path",
+			application: jarPath,
+			testDir:     tmpDir,
+			expectError: false,
+			shouldExist: true,
+		},
+		{
+			name:        "relative JAR path",
+			application: "app.jar",
+			testDir:     tmpDir,
+			expectError: false,
+			shouldExist: true,
+		},
+		{
+			name:        "absolute WAR path",
+			application: warPath,
+			testDir:     tmpDir,
+			expectError: false,
+			shouldExist: true,
+		},
+		{
+			name:        "non-binary path (should not call prepareBinary)",
+			application: tmpDir,
+			testDir:     tmpDir,
+			expectError: false,
+			shouldExist: false, // Returns the directory path as-is
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := target.prepareInput(context.Background(), tt.application, "test", tt.testDir)
+
+			if tt.expectError {
+				if err == nil {
+					t.Error("Expected error but got none")
+				}
+			} else {
+				if err != nil {
+					t.Errorf("Unexpected error: %v", err)
+				}
+				if result == "" {
+					t.Error("Expected non-empty result path")
+				}
+
+				// For binary files, verify the file exists
+				if IsBinaryFile(tt.application) && tt.shouldExist {
+					if _, err := os.Stat(result); err != nil {
+						t.Errorf("Result path does not exist: %s", result)
+					}
+				}
 			}
 		})
 	}

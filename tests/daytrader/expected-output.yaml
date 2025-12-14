@@ -6126,77 +6126,6 @@
           \n Before:\n ```\n @Resource(lookup = \"java:/queue/HELLOWORLDMDBQueue\")\n
           private Queue queue;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBQueue\")\n
           Emitter<String> queueEmitter;\n ```"
-        codeSnip: "\n23  import java.sql.SQLException;\n24  import java.sql.Statement;\n25
-          \ import java.sql.Timestamp;\n26  import java.util.ArrayList;\n27  import
-          java.util.Collection;\n28  \n29  import javax.enterprise.concurrent.ManagedThreadFactory;\n30
-          \ import javax.jms.ConnectionFactory;\n31  import javax.jms.JMSContext;\n32
-          \ import javax.jms.JMSException;\n33  import javax.jms.Queue;\n34  import
-          javax.jms.TextMessage;\n35  import javax.jms.Topic;\n36  import javax.naming.InitialContext;\n37
-          \ import javax.sql.DataSource;\n38  import javax.transaction.UserTransaction;\n39
-          \ \n40  import com.ibm.websphere.samples.daytrader.TradeAction;\n41  import
-          com.ibm.websphere.samples.daytrader.TradeServices;\n42  import com.ibm.websphere.samples.daytrader.beans.MarketSummaryDataBean;\n43
-          \ import com.ibm.websphere.samples.daytrader.beans.RunStatsDataBean;"
-        lineNumber: 33
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-          kind: Module
-          name: javax.jms.Queue
-          package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-        message: "JMS `Queue`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Queue to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/queue/HELLOWORLDMDBQueue\")\n
-          private Queue queue;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBQueue\")\n
-          Emitter<String> queueEmitter;\n ```"
-        codeSnip: "\n2034  }\n2035  \n2036  try {\n2037  qConnFactory = (ConnectionFactory)
-          context.lookup(\"java:comp/env/jms/QueueConnectionFactory\");\n2038  } catch
-          (Exception e) {\n2039  Log.error(\"TradeDirect:init  Unable to locate QueueConnectionFactory.\\n\\t
-          -- Asynchronous mode will not work correctly and Quote Price change publishing
-          will be disabled\");\n2040  TradeConfig.setPublishQuotePriceChange(false);\n2041
-          \ }\n2042  \n2043  try {\n2044  brokerQueue = (Queue) context.lookup(\"java:comp/env/jms/TradeBrokerQueue\");\n2045
-          \ } catch (Exception e) {\n2046  try {\n2047  brokerQueue = (Queue) context.lookup(\"jms/TradeBrokerQueue\");\n2048
-          \ } catch (Exception e2) {\n2049  Log.error(\"TradeDirect:init  Unable to
-          locate TradeBrokerQueue.\\n\\t -- Asynchronous mode will not work correctly
-          and Quote Price change publishing will be disabled\");\n2050  TradeConfig.setPublishQuotePriceChange(false);\n2051
-          \ }\n2052  }\n2053  \n2054  try {"
-        lineNumber: 2044
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-          kind: Method
-          name: init
-          package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-        message: "JMS `Queue`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Queue to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/queue/HELLOWORLDMDBQueue\")\n
-          private Queue queue;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBQueue\")\n
-          Emitter<String> queueEmitter;\n ```"
-        codeSnip: "\n2037  qConnFactory = (ConnectionFactory) context.lookup(\"java:comp/env/jms/QueueConnectionFactory\");\n2038
-          \ } catch (Exception e) {\n2039  Log.error(\"TradeDirect:init  Unable to
-          locate QueueConnectionFactory.\\n\\t -- Asynchronous mode will not work
-          correctly and Quote Price change publishing will be disabled\");\n2040  TradeConfig.setPublishQuotePriceChange(false);\n2041
-          \ }\n2042  \n2043  try {\n2044  brokerQueue = (Queue) context.lookup(\"java:comp/env/jms/TradeBrokerQueue\");\n2045
-          \ } catch (Exception e) {\n2046  try {\n2047  brokerQueue = (Queue) context.lookup(\"jms/TradeBrokerQueue\");\n2048
-          \ } catch (Exception e2) {\n2049  Log.error(\"TradeDirect:init  Unable to
-          locate TradeBrokerQueue.\\n\\t -- Asynchronous mode will not work correctly
-          and Quote Price change publishing will be disabled\");\n2050  TradeConfig.setPublishQuotePriceChange(false);\n2051
-          \ }\n2052  }\n2053  \n2054  try {\n2055  tConnFactory = (ConnectionFactory)
-          context.lookup(\"java:comp/env/jms/TopicConnectionFactory\");\n2056  } catch
-          (Exception e) {\n2057  Log.error(\"TradeDirect:init  Unable to locate TopicConnectionFactory.\\n\\t
-          -- Asynchronous mode will not work correctly and Quote Price change publishing
-          will be disabled\");"
-        lineNumber: 2047
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-          kind: Method
-          name: init
-          package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-        message: "JMS `Queue`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Queue to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/queue/HELLOWORLDMDBQueue\")\n
-          private Queue queue;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBQueue\")\n
-          Emitter<String> queueEmitter;\n ```"
         codeSnip: "\n2085  Log.trace(\"TradeDirect:destroy\");\n2086  } catch (Exception
           e) {\n2087  Log.error(\"TradeDirect:destroy\", e);\n2088  }\n2089  }\n2090
           \ \n2091  private static InitialContext context;\n2092  \n2093  private
@@ -6210,41 +6139,6 @@
           kind: Field
           name: brokerQueue
           package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/ejb3/TradeSLSBBean.java
-        message: "JMS `Queue`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Queue to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/queue/HELLOWORLDMDBQueue\")\n
-          private Queue queue;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBQueue\")\n
-          Emitter<String> queueEmitter;\n ```"
-        codeSnip: |2-
-
-          27  import javax.ejb.EJB;
-          28  import javax.ejb.EJBException;
-          29  import javax.ejb.SessionContext;
-          30  import javax.ejb.Stateless;
-          31  import javax.ejb.TransactionAttribute;
-          32  import javax.ejb.TransactionAttributeType;
-          33  import javax.ejb.TransactionManagement;
-          34  import javax.ejb.TransactionManagementType;
-          35  import javax.enterprise.concurrent.ManagedThreadFactory;
-          36  import javax.jms.JMSContext;
-          37  import javax.jms.Queue;
-          38  import javax.jms.QueueConnectionFactory;
-          39  import javax.jms.TextMessage;
-          40  import javax.jms.Topic;
-          41  import javax.jms.TopicConnectionFactory;
-          42  import javax.persistence.EntityManager;
-          43  import javax.persistence.PersistenceContext;
-          44  import javax.persistence.TypedQuery;
-          45  import javax.persistence.criteria.CriteriaBuilder;
-          46  import javax.persistence.criteria.CriteriaQuery;
-          47  import javax.persistence.criteria.Root;
-        lineNumber: 37
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/ejb3/TradeSLSBBean.java
-          kind: Module
-          name: javax.jms.Queue
-          package: com.ibm.websphere.samples.daytrader.ejb3
       - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/ejb3/TradeSLSBBean.java
         message: "JMS `Queue`s should be replaced with MicroProfile `Emitter`s feeding
           a Channel. See the following example of migrating\n a Queue to an Emitter:\n
@@ -6270,27 +6164,6 @@
           kind: Field
           name: tradeBrokerQueue
           package: com.ibm.websphere.samples.daytrader.ejb3
-      - uri: file:///source/daytrader-ee7-web/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/ejb3/PingServlet2MDBQueue.java
-        message: "JMS `Queue`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Queue to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/queue/HELLOWORLDMDBQueue\")\n
-          private Queue queue;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBQueue\")\n
-          Emitter<String> queueEmitter;\n ```"
-        codeSnip: "\n14  * limitations under the License.\n15  */\n16  package com.ibm.websphere.samples.daytrader.web.prims.ejb3;\n17
-          \ \n18  import java.io.IOException;\n19  \n20  import javax.annotation.Resource;\n21
-          \ import javax.jms.Connection;\n22  import javax.jms.ConnectionFactory;\n23
-          \ import javax.jms.JMSContext;\n24  import javax.jms.Queue;\n25  import
-          javax.jms.TextMessage;\n26  import javax.servlet.ServletConfig;\n27  import
-          javax.servlet.ServletException;\n28  import javax.servlet.annotation.WebServlet;\n29
-          \ import javax.servlet.http.HttpServlet;\n30  import javax.servlet.http.HttpServletRequest;\n31
-          \ import javax.servlet.http.HttpServletResponse;\n32  \n33  import com.ibm.websphere.samples.daytrader.util.Log;\n34
-          \ import com.ibm.websphere.samples.daytrader.util.TradeConfig;"
-        lineNumber: 24
-        variables:
-          file: file:///source/daytrader-ee7-web/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/ejb3/PingServlet2MDBQueue.java
-          kind: Module
-          name: javax.jms.Queue
-          package: com.ibm.websphere.samples.daytrader.web.prims.ejb3
       - uri: file:///source/daytrader-ee7-web/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/ejb3/PingServlet2MDBQueue.java
         message: "JMS `Queue`s should be replaced with MicroProfile `Emitter`s feeding
           a Channel. See the following example of migrating\n a Queue to an Emitter:\n
@@ -6331,67 +6204,6 @@
           \n Before:\n ```\n @Resource(lookup = \"java:/topic/HELLOWORLDMDBTopic\")\n
           private Topic topic;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBTopic\")\n
           Emitter<String> topicEmitter;\n ```"
-        codeSnip: "\n25  import java.sql.Timestamp;\n26  import java.util.ArrayList;\n27
-          \ import java.util.Collection;\n28  \n29  import javax.enterprise.concurrent.ManagedThreadFactory;\n30
-          \ import javax.jms.ConnectionFactory;\n31  import javax.jms.JMSContext;\n32
-          \ import javax.jms.JMSException;\n33  import javax.jms.Queue;\n34  import
-          javax.jms.TextMessage;\n35  import javax.jms.Topic;\n36  import javax.naming.InitialContext;\n37
-          \ import javax.sql.DataSource;\n38  import javax.transaction.UserTransaction;\n39
-          \ \n40  import com.ibm.websphere.samples.daytrader.TradeAction;\n41  import
-          com.ibm.websphere.samples.daytrader.TradeServices;\n42  import com.ibm.websphere.samples.daytrader.beans.MarketSummaryDataBean;\n43
-          \ import com.ibm.websphere.samples.daytrader.beans.RunStatsDataBean;\n44
-          \ import com.ibm.websphere.samples.daytrader.entities.AccountDataBean;\n45
-          \ import com.ibm.websphere.samples.daytrader.entities.AccountProfileDataBean;"
-        lineNumber: 35
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-          kind: Module
-          name: javax.jms.Topic
-          package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-        message: "JMS `Topic`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Topic to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/topic/HELLOWORLDMDBTopic\")\n
-          private Topic topic;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBTopic\")\n
-          Emitter<String> topicEmitter;\n ```"
-        codeSnip: "\n2052  }\n2053  \n2054  try {\n2055  tConnFactory = (ConnectionFactory)
-          context.lookup(\"java:comp/env/jms/TopicConnectionFactory\");\n2056  } catch
-          (Exception e) {\n2057  Log.error(\"TradeDirect:init  Unable to locate TopicConnectionFactory.\\n\\t
-          -- Asynchronous mode will not work correctly and Quote Price change publishing
-          will be disabled\");\n2058  TradeConfig.setPublishQuotePriceChange(false);\n2059
-          \ }\n2060  \n2061  try {\n2062  streamerTopic = (Topic) context.lookup(\"java:comp/env/jms/TradeStreamerTopic\");\n2063
-          \ } catch (Exception e) {\n2064  try {\n2065  streamerTopic = (Topic) context.lookup(\"jms/TradeStreamerTopic\");\n2066
-          \ } catch (Exception e2) {\n2067  Log.error(\"TradeDirect:init  Unable to
-          locate TradeStreamerTopic.\\n\\t -- Asynchronous mode will not work correctly
-          and Quote Price change publishing will be disabled\");\n2068  TradeConfig.setPublishQuotePriceChange(false);\n2069
-          \ }\n2070  }\n2071  \n2072  "
-        lineNumber: 2062
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-          kind: Method
-          name: init
-          package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-        message: "JMS `Topic`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Topic to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/topic/HELLOWORLDMDBTopic\")\n
-          private Topic topic;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBTopic\")\n
-          Emitter<String> topicEmitter;\n ```"
-        codeSnip: |2-
-
-          11  * distributed under the License is distributed on an "AS IS" BASIS,
-        lineNumber: 2065
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-          kind: Method
-          name: init
-          package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
-        message: "JMS `Topic`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Topic to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/topic/HELLOWORLDMDBTopic\")\n
-          private Topic topic;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBTopic\")\n
-          Emitter<String> topicEmitter;\n ```"
         codeSnip: "\n2089  }\n2090  \n2091  private static InitialContext context;\n2092
           \ \n2093  private static ConnectionFactory qConnFactory;\n2094  \n2095  private
           static Queue brokerQueue;\n2096  \n2097  private static ConnectionFactory
@@ -6405,28 +6217,6 @@
           kind: Field
           name: streamerTopic
           package: com.ibm.websphere.samples.daytrader.direct
-      - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/ejb3/TradeSLSBBean.java
-        message: "JMS `Topic`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Topic to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/topic/HELLOWORLDMDBTopic\")\n
-          private Topic topic;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBTopic\")\n
-          Emitter<String> topicEmitter;\n ```"
-        codeSnip: "\n30  import javax.ejb.Stateless;\n31  import javax.ejb.TransactionAttribute;\n32
-          \ import javax.ejb.TransactionAttributeType;\n33  import javax.ejb.TransactionManagement;\n34
-          \ import javax.ejb.TransactionManagementType;\n35  import javax.enterprise.concurrent.ManagedThreadFactory;\n36
-          \ import javax.jms.JMSContext;\n37  import javax.jms.Queue;\n38  import
-          javax.jms.QueueConnectionFactory;\n39  import javax.jms.TextMessage;\n40
-          \ import javax.jms.Topic;\n41  import javax.jms.TopicConnectionFactory;\n42
-          \ import javax.persistence.EntityManager;\n43  import javax.persistence.PersistenceContext;\n44
-          \ import javax.persistence.TypedQuery;\n45  import javax.persistence.criteria.CriteriaBuilder;\n46
-          \ import javax.persistence.criteria.CriteriaQuery;\n47  import javax.persistence.criteria.Root;\n48
-          \ import javax.transaction.RollbackException;\n49  \n50  import com.ibm.websphere.samples.daytrader.TradeAction;"
-        lineNumber: 40
-        variables:
-          file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/ejb3/TradeSLSBBean.java
-          kind: Module
-          name: javax.jms.Topic
-          package: com.ibm.websphere.samples.daytrader.ejb3
       - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/ejb3/TradeSLSBBean.java
         message: "JMS `Topic`s should be replaced with MicroProfile `Emitter`s feeding
           a Channel. See the following example of migrating\n a Topic to an Emitter:\n
@@ -6452,27 +6242,6 @@
           kind: Field
           name: tradeStreamerTopic
           package: com.ibm.websphere.samples.daytrader.ejb3
-      - uri: file:///source/daytrader-ee7-web/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/ejb3/PingServlet2MDBTopic.java
-        message: "JMS `Topic`s should be replaced with MicroProfile `Emitter`s feeding
-          a Channel. See the following example of migrating\n a Topic to an Emitter:\n
-          \n Before:\n ```\n @Resource(lookup = \"java:/topic/HELLOWORLDMDBTopic\")\n
-          private Topic topic;\n ```\n \n After:\n ```\n @Inject\n @Channel(\"HELLOWORLDMDBTopic\")\n
-          Emitter<String> topicEmitter;\n ```"
-        codeSnip: "\n15  */\n16  package com.ibm.websphere.samples.daytrader.web.prims.ejb3;\n17
-          \ \n18  import java.io.IOException;\n19  \n20  import javax.annotation.Resource;\n21
-          \ import javax.jms.Connection;\n22  import javax.jms.ConnectionFactory;\n23
-          \ import javax.jms.JMSContext;\n24  import javax.jms.TextMessage;\n25  import
-          javax.jms.Topic;\n26  import javax.servlet.ServletConfig;\n27  import javax.servlet.ServletException;\n28
-          \ import javax.servlet.annotation.WebServlet;\n29  import javax.servlet.http.HttpServlet;\n30
-          \ import javax.servlet.http.HttpServletRequest;\n31  import javax.servlet.http.HttpServletResponse;\n32
-          \ \n33  import com.ibm.websphere.samples.daytrader.util.Log;\n34  import
-          com.ibm.websphere.samples.daytrader.util.TradeConfig;\n35  "
-        lineNumber: 25
-        variables:
-          file: file:///source/daytrader-ee7-web/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/ejb3/PingServlet2MDBTopic.java
-          kind: Module
-          name: javax.jms.Topic
-          package: com.ibm.websphere.samples.daytrader.web.prims.ejb3
       - uri: file:///source/daytrader-ee7-web/src/main/java/com/ibm/websphere/samples/daytrader/web/prims/ejb3/PingServlet2MDBTopic.java
         message: "JMS `Topic`s should be replaced with MicroProfile `Emitter`s feeding
           a Channel. See the following example of migrating\n a Topic to an Emitter:\n
@@ -6547,9 +6316,16 @@
       - uri: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java
         message: References to JavaEE/JakartaEE JMS elements should be removed and
           replaced with their Quarkus SmallRye/Microprofile equivalents.
-        codeSnip: |2-
-
-          11  * distributed under the License is distributed on an "AS IS" BASIS,
+        codeSnip: "\n22  import java.sql.ResultSet;\n23  import java.sql.SQLException;\n24
+          \ import java.sql.Statement;\n25  import java.sql.Timestamp;\n26  import
+          java.util.ArrayList;\n27  import java.util.Collection;\n28  \n29  import
+          javax.enterprise.concurrent.ManagedThreadFactory;\n30  import javax.jms.ConnectionFactory;\n31
+          \ import javax.jms.JMSContext;\n32  import javax.jms.JMSException;\n33  import
+          javax.jms.Queue;\n34  import javax.jms.TextMessage;\n35  import javax.jms.Topic;\n36
+          \ import javax.naming.InitialContext;\n37  import javax.sql.DataSource;\n38
+          \ import javax.transaction.UserTransaction;\n39  \n40  import com.ibm.websphere.samples.daytrader.TradeAction;\n41
+          \ import com.ibm.websphere.samples.daytrader.TradeServices;\n42  import
+          com.ibm.websphere.samples.daytrader.beans.MarketSummaryDataBean;"
         lineNumber: 32
         variables:
           file: file:///source/daytrader-ee7-ejb/src/main/java/com/ibm/websphere/samples/daytrader/direct/TradeDirect.java

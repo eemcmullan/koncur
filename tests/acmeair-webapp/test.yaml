@@ -1,18 +1,16 @@
-name: "acmeair-webapp"
-description: ""
+name: acmeair-webapp
+description: Binary analysis of acmeair webapp WAR file
 analysis:
-  application: "binary:acmeair-webapp-1.0-SNAPSHOT.war"
-  labelSelector: "konveyor.io/target=cloud-readiness || konveyor.io/target=jakarta-ee"
-  analysisMode: "full"
-timeout: 10m
+    application: acmeair-webapp-1.0-SNAPSHOT.war
+    labelSelector: konveyor.io/target=cloud-readiness || konveyor.io/target=jakarta-ee
+    context_lines: 0
+    incident_selector: ""
+    source: []
+    target: []
+    rules: []
+    analysisMode: full
+timeout: 10m0s
 expect:
-  exitCode: 0
-  output:
-    result:
-      - name: "eap8/eap7"
-        violations:
-          javax-to-jakarta-import-00001:
-            description: "The package 'javax' has been replaced by 'jakarta'."
-            category: "mandatory"
-            effort: 1
-            incidents: []
+    exitCode: 0
+    output:
+        file: expected-output.yaml
