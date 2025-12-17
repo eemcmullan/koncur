@@ -147,16 +147,6 @@ func (t *TackleHubTarget) Execute(ctx context.Context, test *config.TestDefiniti
 	}
 	log.Info("Application created", "id", app.ID, "name", app.Name)
 
-	// Step 1.5: Upload binary if this is a binary analysis
-	if IsBinaryFile(test.Analysis.Application) {
-		testDir := test.GetTestDir()
-		log.Info("Uploading binary for analysis", "application", test.Analysis.Application)
-		err = t.uploadBinary(app, test.Analysis.Application, testDir)
-		if err != nil {
-			return nil, fmt.Errorf("failed to upload binary: %w", err)
-		}
-	}
-
 	// Step 2: Create analysis task
 	log.Info("Creating analysis task", "applicationID", app.ID)
 	task, err := t.createAnalysisTask(ctx, test, app)
@@ -370,7 +360,7 @@ func (t *TackleHubTarget) createApplication(test *config.TestDefinition) (*api.A
 }
 
 // uploadBinary uploads a binary file to the application's bucket
-func (t *TackleHubTarget) uploadBinary(app *api.Application, binaryPath string, testDir string) error {
+func (t *TackleHubTarget) uploadBinary(task *api.Task, binaryPath string, testDir string) error {
 	log := util.GetLogger()
 
 	// Resolve the binary path (handle both absolute and relative paths)
@@ -389,19 +379,19 @@ func (t *TackleHubTarget) uploadBinary(app *api.Application, binaryPath string, 
 		return fmt.Errorf("binary file not found at %s: %w", absPath, err)
 	}
 
-	log.Info("Uploading binary file", "path", absPath, "appID", app.ID)
+	log.Info("Uploading binary file", "path", absPath, "task", task.ID)
 
 	// Get application bucket
-	bucket := t.client.Application.Bucket(app.ID)
+	bucket := t.client.Bucket.Content(task.Bucket.ID)
 
 	// Upload the binary to the bucket
 	// The file will be stored at /binary in the bucket
-	err = bucket.Put("/binary", absPath)
+	err = bucket.Put(absPath, fmt.Sprintf("/binary/%v", filepath.Base(absPath)))
 	if err != nil {
 		return fmt.Errorf("failed to upload binary: %w", err)
 	}
 
-	log.Info("Successfully uploaded binary", "path", absPath, "appID", app.ID)
+	log.Info("Successfully uploaded binary", "path", absPath, "task", task.ID, "bucket_content")
 	return nil
 }
 
@@ -417,7 +407,7 @@ func (t *TackleHubTarget) createAnalysisTask(_ context.Context, test *config.Tes
 	if isBinary {
 		// Binary mode
 		taskData.Mode.Binary = true
-		taskData.Mode.Artifact = "/binary"  // Path where binary is stored in bucket
+		taskData.Mode.Artifact = fmt.Sprintf("/binary/%v", test.Analysis.Application) // Path where binary is stored in bucket
 		log.Info("Configuring binary analysis mode", "artifact", taskData.Mode.Artifact)
 	} else {
 		// Source code mode
@@ -444,12 +434,24 @@ func (t *TackleHubTarget) createAnalysisTask(_ context.Context, test *config.Tes
 		Addon:       "analyzer",
 		Application: &api.Ref{ID: app.ID},
 		Data:        taskData,
+		State:       "Created",
 	}
 
 	// Debug: log the task before creating
 	log.V(1).Info("Creating task", "name", task.Name, "kind", task.Kind, "addon", task.Addon, "appID", app.ID)
 
 	err := t.client.Task.Create(task)
+	if err != nil {
+		return nil, err
+	}
+	if isBinary {
+		err = t.uploadBinary(task, test.Analysis.Application, test.GetTestDir())
+		if err != nil {
+			return nil, err
+		}
+	}
+	task.State = "Ready"
+	err = t.client.Task.Update(task)
 	if err != nil {
 		return nil, err
 	}
