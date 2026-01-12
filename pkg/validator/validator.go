@@ -112,6 +112,11 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 	errors := []ValidationError{}
 	comparer := getComparer(targetType, testDir)
 
+	expectedRulesetNames := make(map[string]bool)
+	for _, ers := range expected {
+		expectedRulesetNames[ers.Name] = true
+	}
+
 	for _, ers := range expected {
 		found := false
 		for _, rs := range actual {
@@ -127,6 +132,15 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 						errors = append(errors, *err)
 					}
 				}
+				for k := range rs.Errors {
+					if _, exists := ers.Errors[k]; !exists {
+						errors = append(errors, ValidationError{
+							Path:    fmt.Sprintf("%s/error/%s", rs.Name, k),
+							Message: fmt.Sprintf("Unexpected error found: %s", k),
+							Actual:  rs.Errors[k],
+						})
+					}
+				}
 			}
 
 			if !reflect.DeepEqual(rs.Tags, ers.Tags) {
@@ -134,6 +148,15 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 					if err, ok := comparer.compareTag(erstags, rs.Tags); ok {
 						err.Path = fmt.Sprintf("%s/tags/%s", rs.Name, erstags)
 						errors = append(errors, *err)
+					}
+				}
+				for _, atag := range rs.Tags {
+					if !findExpectedString(atag, ers.Tags) {
+						errors = append(errors, ValidationError{
+							Path:    fmt.Sprintf("%s/tags/%s", rs.Name, atag),
+							Message: fmt.Sprintf("Unexpected tag found: %s", atag),
+							Actual:  atag,
+						})
 					}
 				}
 			}
@@ -150,6 +173,15 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 							Path:     fmt.Sprintf("%s/insights/%s", rs.Name, k),
 							Message:  newMessage,
 							Expected: ersinsights,
+						})
+					}
+				}
+				for k := range rs.Insights {
+					if _, exists := ers.Insights[k]; !exists {
+						errors = append(errors, ValidationError{
+							Path:    fmt.Sprintf("%s/insights/%s", rs.Name, k),
+							Message: fmt.Sprintf("Unexpected insight found: %s", k),
+							Actual:  rs.Insights[k],
 						})
 					}
 				}
@@ -171,12 +203,30 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 						})
 					}
 				}
+				for k := range rs.Violations {
+					if _, exists := ers.Violations[k]; !exists {
+						errors = append(errors, ValidationError{
+							Path:    fmt.Sprintf("%s/violation/%s", rs.Name, k),
+							Message: fmt.Sprintf("Unexpected violation found: %s", k),
+							Actual:  rs.Violations[k],
+						})
+					}
+				}
 			}
 			if !reflect.DeepEqual(rs.Unmatched, ers.Unmatched) {
 				for _, ersunmatched := range ers.Unmatched {
 					if err, ok := comparer.compareUnmatched(ersunmatched, rs.Unmatched); ok {
 						err.Path = fmt.Sprintf("%s/unmatched/%s", rs.Name, ersunmatched)
 						errors = append(errors, *err)
+					}
+				}
+				for _, aunmatched := range rs.Unmatched {
+					if !findExpectedString(aunmatched, ers.Unmatched) {
+						errors = append(errors, ValidationError{
+							Path:    fmt.Sprintf("%s/unmatched/%s", rs.Name, aunmatched),
+							Message: fmt.Sprintf("Unexpected unmatched rule found: %s", aunmatched),
+							Actual:  aunmatched,
+						})
 					}
 				}
 			}
@@ -187,11 +237,30 @@ func ValidateFiles(testDir, targetType string, actual, expected []konveyor.RuleS
 						errors = append(errors, *err)
 					}
 				}
+				for _, askipped := range rs.Skipped {
+					if !findExpectedString(askipped, ers.Skipped) {
+						errors = append(errors, ValidationError{
+							Path:    fmt.Sprintf("%s/skipped/%s", rs.Name, askipped),
+							Message: fmt.Sprintf("Unexpected skipped rule found: %s", askipped),
+							Actual:  askipped,
+						})
+					}
+				}
 			}
 			break
 		}
 		if !found {
 			errors = append(errors, ValidationError{Path: fmt.Sprintf("ruleset/%s", ers.Name), Message: "Did not find a matching ruleset"})
+		}
+	}
+
+	for _, rs := range actual {
+		if !expectedRulesetNames[rs.Name] {
+			errors = append(errors, ValidationError{
+				Path:    fmt.Sprintf("ruleset/%s", rs.Name),
+				Message: fmt.Sprintf("Unexpected ruleset found: %s", rs.Name),
+				Actual:  rs.Name,
+			})
 		}
 	}
 
