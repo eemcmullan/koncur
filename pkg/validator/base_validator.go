@@ -115,7 +115,7 @@ func (b *baseValidator) compareViolationDetails(expected, actual konveyor.Violat
 		}
 		if !found {
 			errors = append(errors, ValidationError{
-				Message: fmt.Sprintf("Did not find expected incident: %s:%d", i.URI, i.LineNumber),
+				Message: fmt.Sprintf("Did not find expected incident: %s:%d", i.URI, lineNumberOrZero(i.LineNumber)),
 			})
 		}
 	}
@@ -130,7 +130,7 @@ func (b *baseValidator) compareViolationDetails(expected, actual konveyor.Violat
 		}
 		if !found {
 			errors = append(errors, ValidationError{
-				Message: fmt.Sprintf("Unexpected incident found: %s:%d", ai.URI, ai.LineNumber),
+				Message: fmt.Sprintf("Unexpected incident found: %s:%d", ai.URI, lineNumberOrZero(ai.LineNumber)),
 			})
 		}
 	}
