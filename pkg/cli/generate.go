@@ -230,6 +230,23 @@ This is useful when:
 
 				test.Expect.Output.File = "expected-output.yaml"
 
+				depsOutPath := filepath.Join(filepath.Dir(result.OutputFile), "dependencies.yaml")
+				if _, statErr := os.Stat(depsOutPath); statErr == nil {
+					depsList, err := parser.ParseDependencies(depsOutPath)
+					if err != nil {
+						color.Red("  ✗ Failed to parse dependencies.yaml: %v", err)
+						failCount++
+						continue
+					}
+					expectedDepsFile := filepath.Join(testDirPath, "expected-deps-output.yaml")
+					if err := saveNormalizedDepsFlat(depsList, expectedDepsFile, testDirPath); err != nil {
+						color.Red("  ✗ Failed to save expected dependencies: %v", err)
+						failCount++
+						continue
+					}
+					test.Expect.Output.DepFile = "expected-deps-output.yaml"
+				}
+
 				// Save updated test definition
 				if err := saveSimpleTestDefinition(testFile, test); err != nil {
 					color.Red("  ✗ Failed to save: %v", err)
@@ -323,7 +340,8 @@ func validateTestForGeneration(test *config.TestDefinition) error {
 func saveSimpleTestDefinition(testFile string, test *config.TestDefinition) error {
 	// Create a simplified structure without the Result field
 	type SimpleExpectedOutput struct {
-		File string `yaml:"file,omitempty"`
+		File    string `yaml:"file,omitempty"`
+		DepFile string `yaml:"dep-file,omitempty"`
 	}
 
 	type SimpleExpectConfig struct {
@@ -351,7 +369,8 @@ func saveSimpleTestDefinition(testFile string, test *config.TestDefinition) erro
 		Expect: SimpleExpectConfig{
 			ExitCode: test.Expect.ExitCode,
 			Output: SimpleExpectedOutput{
-				File: test.Expect.Output.File,
+				File:    test.Expect.Output.File,
+				DepFile: test.Expect.Output.DepFile,
 			},
 		},
 	}
@@ -393,5 +412,20 @@ func saveFilteredOutput(rulesets []konveyor.RuleSet, path string, testDir string
 		return fmt.Errorf("failed to write file: %w", err)
 	}
 
+	return nil
+}
+
+func saveNormalizedDepsFlat(items []konveyor.DepsFlatItem, path string, testDir string) error {
+	normalized, err := parser.NormalizeDepsFlat(items, testDir)
+	if err != nil {
+		return err
+	}
+	data, err := yaml2.Marshal(normalized)
+	if err != nil {
+		return fmt.Errorf("failed to marshal dependencies: %w", err)
+	}
+	if err := os.WriteFile(path, data, 0644); err != nil {
+		return fmt.Errorf("failed to write dependencies file: %w", err)
+	}
 	return nil
 }

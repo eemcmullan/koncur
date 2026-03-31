@@ -128,6 +128,15 @@ type ExpectedOutput struct {
 
 	// ResolvedFilePath is the absolute path to the expected output file (not in YAML)
 	ResolvedFilePath string `yaml:"-"`
+
+	// DepFile is an optional path (relative to test.yaml) to expected dependencies.yaml output
+	DepFile string `yaml:"dep-file,omitempty"`
+
+	// DepFileResolvedPath is set when DepFile is loaded (not in YAML)
+	DepFileResolvedPath string `yaml:"-"`
+
+	// DepItems are loaded from DepFile by the config loader (not in YAML)
+	DepItems []konveyor.DepsFlatItem `yaml:"-"`
 }
 
 // Duration is a wrapper around time.Duration that supports YAML unmarshaling

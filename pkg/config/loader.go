@@ -70,6 +70,25 @@ func LoadWithOptions(path string, skipExpectedOutput bool) (*TestDefinition, err
 		test.Expect.Output.Result = rulesets
 	}
 
+	if test.Expect.Output.DepFile != "" && !skipExpectedOutput {
+		depsPath := test.Expect.Output.DepFile
+		if !filepath.IsAbs(depsPath) {
+			testDir := filepath.Dir(path)
+			depsPath = filepath.Join(testDir, depsPath)
+		}
+		absDepsPath, err := filepath.Abs(depsPath)
+		if err != nil {
+			return nil, fmt.Errorf("failed to get absolute path for expected dependencies file: %w", err)
+		}
+		test.Expect.Output.DepFileResolvedPath = absDepsPath
+
+		items, err := LoadExpectedDependencies(depsPath)
+		if err != nil {
+			return nil, fmt.Errorf("failed to load expected dependencies from %s: %w", test.Expect.Output.DepFile, err)
+		}
+		test.Expect.Output.DepItems = items
+	}
+
 	return &test, nil
 }
 
@@ -86,4 +105,18 @@ func LoadExpectedOutput(path string) ([]konveyor.RuleSet, error) {
 	}
 
 	return rulesets, nil
+}
+
+func LoadExpectedDependencies(path string) ([]konveyor.DepsFlatItem, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read expected dependencies file: %w", err)
+	}
+
+	var items []konveyor.DepsFlatItem
+	if err := yaml.Unmarshal(data, &items); err != nil {
+		return nil, fmt.Errorf("failed to parse expected dependencies YAML: %w", err)
+	}
+
+	return items, nil
 }
