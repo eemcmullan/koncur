@@ -129,14 +129,33 @@ type ExpectedOutput struct {
 	// ResolvedFilePath is the absolute path to the expected output file (not in YAML)
 	ResolvedFilePath string `yaml:"-"`
 
-	// DepFile is an optional path (relative to test.yaml) to expected dependencies.yaml output
-	DepFile string `yaml:"dep-file,omitempty"`
+	// DepFileKantra is the expected dependencies.yaml (relative to test.yaml) when using the kantra target.
+	DepFileKantra string `yaml:"dep-file-kantra,omitempty"`
+	// DepFileHub is the expected dependencies.yaml when using the tackle-hub target.
+	DepFileHub string `yaml:"dep-file-hub,omitempty"`
 
-	// DepFileResolvedPath is set when DepFile is loaded (not in YAML)
-	DepFileResolvedPath string `yaml:"-"`
+	// DepItemsKantra are loaded from DepFileKantra by the config loader (not in YAML)
+	DepItemsKantra []konveyor.DepsFlatItem `yaml:"-"`
+	// DepItemsHub are loaded from DepFileHub by the config loader (not in YAML)
+	DepItemsHub []konveyor.DepsFlatItem `yaml:"-"`
+}
 
-	// DepItems are loaded from DepFile by the config loader (not in YAML)
-	DepItems []konveyor.DepsFlatItem `yaml:"-"`
+func (e *ExpectedOutput) ExpectedDepItemsForTarget(targetType string) ([]konveyor.DepsFlatItem, bool) {
+	switch targetType {
+	case "tackle-hub":
+		if e.DepFileHub != "" {
+			return e.DepItemsHub, true
+		}
+	case "kantra":
+		if e.DepFileKantra != "" {
+			return e.DepItemsKantra, true
+		}
+	default:
+		if e.DepFileKantra != "" {
+			return e.DepItemsKantra, true
+		}
+	}
+	return nil, false
 }
 
 // Duration is a wrapper around time.Duration that supports YAML unmarshaling

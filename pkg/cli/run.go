@@ -361,7 +361,7 @@ func runSingleTest(test *config.TestDefinition, target targets.Target, targetCon
 		return testResult, fmt.Errorf("validation error: %w", err)
 	}
 
-	if test.Expect.Output.DepFile != "" {
+	if expectedDepItems, ok := test.Expect.Output.ExpectedDepItemsForTarget(tgtType); ok {
 		depsPath := filepath.Join(filepath.Dir(result.OutputFile), "dependencies.yaml")
 		actualDeps, err := parser.ParseDependencies(depsPath)
 		if err != nil {
@@ -375,7 +375,7 @@ func runSingleTest(test *config.TestDefinition, target targets.Target, targetCon
 			testResult.ErrorMessage = fmt.Sprintf("failed to normalize dependencies output: %v", err)
 			return testResult, fmt.Errorf("failed to normalize dependencies output: %w", err)
 		}
-		normExpectedDeps, err := parser.NormalizeDepsFlat(test.Expect.Output.DepItems, test.GetTestDir())
+		normExpectedDeps, err := parser.NormalizeDepsFlat(expectedDepItems, test.GetTestDir())
 		if err != nil {
 			testResult.Status = "failed"
 			testResult.ErrorMessage = fmt.Sprintf("failed to normalize expected dependencies: %v", err)

@@ -238,13 +238,19 @@ This is useful when:
 						failCount++
 						continue
 					}
-					expectedDepsFile := filepath.Join(testDirPath, "expected-deps-output.yaml")
+					var expectedDepsFile string
+					if targetTypeGen == "tackle-hub" {
+						expectedDepsFile = filepath.Join(testDirPath, "expected-deps-hub.yaml")
+						test.Expect.Output.DepFileHub = "expected-deps-hub.yaml"
+					} else {
+						expectedDepsFile = filepath.Join(testDirPath, "expected-deps-kantra.yaml")
+						test.Expect.Output.DepFileKantra = "expected-deps-kantra.yaml"
+					}
 					if err := saveNormalizedDepsFlat(depsList, expectedDepsFile, testDirPath); err != nil {
 						color.Red("  ✗ Failed to save expected dependencies: %v", err)
 						failCount++
 						continue
 					}
-					test.Expect.Output.DepFile = "expected-deps-output.yaml"
 				}
 
 				// Save updated test definition
@@ -340,8 +346,9 @@ func validateTestForGeneration(test *config.TestDefinition) error {
 func saveSimpleTestDefinition(testFile string, test *config.TestDefinition) error {
 	// Create a simplified structure without the Result field
 	type SimpleExpectedOutput struct {
-		File    string `yaml:"file,omitempty"`
-		DepFile string `yaml:"dep-file,omitempty"`
+		File           string `yaml:"file,omitempty"`
+		DepFileKantra  string `yaml:"dep-file-kantra,omitempty"`
+		DepFileHub     string `yaml:"dep-file-hub,omitempty"`
 	}
 
 	type SimpleExpectConfig struct {
@@ -369,8 +376,9 @@ func saveSimpleTestDefinition(testFile string, test *config.TestDefinition) erro
 		Expect: SimpleExpectConfig{
 			ExitCode: test.Expect.ExitCode,
 			Output: SimpleExpectedOutput{
-				File:    test.Expect.Output.File,
-				DepFile: test.Expect.Output.DepFile,
+				File:          test.Expect.Output.File,
+				DepFileKantra: test.Expect.Output.DepFileKantra,
+				DepFileHub:    test.Expect.Output.DepFileHub,
 			},
 		},
 	}

@@ -70,23 +70,33 @@ func LoadWithOptions(path string, skipExpectedOutput bool) (*TestDefinition, err
 		test.Expect.Output.Result = rulesets
 	}
 
-	if test.Expect.Output.DepFile != "" && !skipExpectedOutput {
-		depsPath := test.Expect.Output.DepFile
+	loadDeps := func(rel string, assign func([]konveyor.DepsFlatItem)) error {
+		if rel == "" {
+			return nil
+		}
+		depsPath := rel
 		if !filepath.IsAbs(depsPath) {
 			testDir := filepath.Dir(path)
 			depsPath = filepath.Join(testDir, depsPath)
 		}
-		absDepsPath, err := filepath.Abs(depsPath)
-		if err != nil {
-			return nil, fmt.Errorf("failed to get absolute path for expected dependencies file: %w", err)
-		}
-		test.Expect.Output.DepFileResolvedPath = absDepsPath
-
 		items, err := LoadExpectedDependencies(depsPath)
 		if err != nil {
-			return nil, fmt.Errorf("failed to load expected dependencies from %s: %w", test.Expect.Output.DepFile, err)
+			return fmt.Errorf("failed to load expected dependencies from %s: %w", rel, err)
 		}
-		test.Expect.Output.DepItems = items
+		assign(items)
+		return nil
+	}
+	if !skipExpectedOutput {
+		if err := loadDeps(test.Expect.Output.DepFileKantra, func(items []konveyor.DepsFlatItem) {
+			test.Expect.Output.DepItemsKantra = items
+		}); err != nil {
+			return nil, err
+		}
+		if err := loadDeps(test.Expect.Output.DepFileHub, func(items []konveyor.DepsFlatItem) {
+			test.Expect.Output.DepItemsHub = items
+		}); err != nil {
+			return nil, err
+		}
 	}
 
 	return &test, nil
