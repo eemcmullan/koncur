@@ -61,6 +61,23 @@ func TestParseSkipCommentPreamble(t *testing.T) {
 			wantFound:   true,
 			wantTargets: []string{"kantra"},
 		},
+		{
+			name:      "skipped comment after yaml starts is ignored",
+			yaml:      "name: x\n# SKIPPED: kantra\n",
+			wantFound: false,
+		},
+		{
+			name:        "document marker then skipped comment",
+			yaml:        "---\n# SKIPPED: kantra\nname: x\n",
+			wantFound:   true,
+			wantTargets: []string{"kantra"},
+		},
+		{
+			name:        "yaml directive and marker then skipped",
+			yaml:        "%YAML 1.1\n---\n# SKIPPED: hub\nname: x\n",
+			wantFound:   true,
+			wantTargets: []string{"tackle-hub"},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
